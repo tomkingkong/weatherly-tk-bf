@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './Card.css';
+import SevenHour from './SevenHour.js'
+import TenDay from './TenDay.js'
+
 
 
 export default class Card extends Component {
@@ -12,8 +15,8 @@ export default class Card extends Component {
   } //end of constructor
 
   render() {
-    
-    
+
+
     return (
       <article className="Card">
         {/*<CurrentWeather />*/}
