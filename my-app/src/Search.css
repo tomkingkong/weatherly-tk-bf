@@ -1,0 +1,16 @@
+.Search {
+  margin: 2rem;
+}
+
+.Search input {
+  width: 15rem;
+  height: 1.5rem;
+  border-radius: 0.2rem;
+  border: 0.1rem solid cadetblue;
+}
+
+button {
+  margin: 0 1rem;
+  height: 1.8rem;
+  border-radius: 0.2rem;
+}
