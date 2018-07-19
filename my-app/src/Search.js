@@ -14,7 +14,7 @@ export default class Search extends Component {
     return (
       <form className="Search" onSubmit={ (e) => {
         e.preventDefault();
-        this.props.updateCity(this.state.userCityInput)
+        this.props.updateLocation(this.state.userCityInput, this.state.userStateInput)
         this.setState({
           userCityInput: '',
           userStateInput: ''

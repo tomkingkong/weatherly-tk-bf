@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import Header from './Header.js'
-import Search from './Search.js'
-import CurrentWeather from './CurrentWeather.js'
-import Key from './Key.js'
-
-
+import Header from './Header.js';
+import Search from './Search.js';
+import CurrentWeather from './CurrentWeather.js';
+import Key from './Key.js';
 
 class App extends Component {
   constructor() {
@@ -20,7 +18,6 @@ class App extends Component {
       selectedHigh: 0,
       selectedLow: 0,
       selectedSummary: ''
-
     }
   }
 
@@ -31,30 +28,25 @@ class App extends Component {
           .catch(error => { throw new Error(error) });
   }
 
-  searched() {
-    let city = this.state.selectedCity;
-    let state = this.state.selectedState;
+  updateLocation = (city, state) => {
+    let newCity = city;
+    let newState = state;
+    this.setState({
+      selectedCity: newCity,
+      selectedState: newState
+    })
 
-    fetch(`http://api.wunderground.com/api/${Key}/conditions/q/${state}/${city}.json`)
+    fetch(`http://api.wunderground.com/api/${Key}/conditions/q/${newState}/${newCity}.json`)
       .then(response => response.json())
         .then(data => console.log(data))
           .catch(error => { throw new Error(error) });
-  }
-
-
-
-  updateCity = (city) => {
-    let newCity = city;
-    this.setState({
-      selectedCity: newCity
-    })
   }
 
   render() {
     return (
       <div className="App">
         <Header />
-        <Search updateCity={this.updateCity}/>
+        <Search updateLocation={this.updateLocation}/>
         <CurrentWeather 
          currentCity={this.state.selectedCity}
          currentDay={this.state.selectedDay}
