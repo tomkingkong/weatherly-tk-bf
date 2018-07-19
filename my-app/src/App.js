@@ -34,11 +34,18 @@ class App extends Component {
           .catch(error => { throw new Error(error) });
   }
 
+  updateCity = (city) => {
+    let newCity = city;
+    this.setState({
+      selectedCity: newCity
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
-        <Search />
+        <Search updateCity={this.updateCity}/>
         <CurrentWeather 
          currentCity={this.state.selectedCity}
          currentDay={this.state.selectedDay}

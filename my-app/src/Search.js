@@ -2,37 +2,31 @@ import React, { Component } from 'react';
 import './Search.css'
 
 
-
 export default class Search extends Component {
   constructor() {
     super();
     this.state = {
-      userInput: ''
+      userCityInput: '',
+      userStateInput: 'CO'
     }
-    this.submitCity = this.submitCity.bind(this);
   } // end of constructor
-
-  submitCity(e) {
-    e.preventDefault()
-    console.log(this.state.userInput);
-    this.setState({
-      userInput: ''
-    })
-
-  }
 
   render() {
     return (
       <form className="Search" onSubmit={ (e) => {
-        this.submitCity(e) 
+        e.preventDefault();
+        this.props.updateCity(this.state.userCityInput)
+        this.setState({
+          userCityInput: ''
+        })
       }}>
         <input 
           type="text" 
-          value={this.state.userInput}
+          value={this.state.userCityInput}
           placeholder="Select a city..."
           onChange={ (e) => {
             this.setState({ 
-              userInput: e.target.value
+              userCityInput: e.target.value
             })
           }}
         />
