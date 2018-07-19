@@ -4,10 +4,26 @@ import './App.css';
 import Header from './Header.js'
 import Search from './Search.js'
 import CurrentWeather from './CurrentWeather.js'
+import Key from './Key.js'
+
 
 
 
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+
+    }
+  }
+
+  componentDidMount() {
+    let city = 'Denver';
+    fetch(`http://api.wunderground.com/api/${Key}/conditions/q/co/${city}.json`) //add user input in place of Denver.
+    .then(response => response.json()).then(data => console.log(data));
+  }
+
   render() {
     return (
       <div className="App">
