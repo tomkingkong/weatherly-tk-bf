@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './Search.css'
 
-
 export default class Search extends Component {
   constructor() {
     super();
     this.state = {
       userCityInput: '',
-      userStateInput: 'CO'
+      userStateInput: ''
     }
   } // end of constructor
 
@@ -17,18 +16,31 @@ export default class Search extends Component {
         e.preventDefault();
         this.props.updateCity(this.state.userCityInput)
         this.setState({
-          userCityInput: ''
+          userCityInput: '',
+          userStateInput: ''
         })
       }}>
         <input 
           type="text" 
           value={this.state.userCityInput}
-          placeholder="Select a city..."
+          placeholder="CITY"
           onChange={ (e) => {
             this.setState({ 
               userCityInput: e.target.value
             })
           }}
+        />
+        <input 
+        className="state-input"
+        type="text"
+        maxLength="2"
+        value={this.state.userStateInput}
+        placeholder="STATE"
+        onChange={ (e) => {
+          this.setState({
+            userStateInput: e.target.value
+          })
+        }}
         />
         <button>Submit</button>
       </form>

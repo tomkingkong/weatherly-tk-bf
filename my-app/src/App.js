@@ -13,8 +13,8 @@ class App extends Component {
     super();
 
     this.state = {
-      selectedCity: '',
-      selectedDay: '',
+      selectedCity: 'Denver',
+      selectedState: 'CO',
       selectedCondition: '',
       selectedTemp: '',
       selectedHigh: 0,
@@ -25,14 +25,23 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let city = this.state.selectedCity;
-    let state = this.state.selectedState;
-
-    fetch(`http://api.wunderground.com/api/${Key}/conditions/q/${state}/${city}.json`) //add user input in place of Denver.
+    fetch(`http://api.wunderground.com/api/${Key}/conditions/q/co/denver.json`)
       .then(response => response.json())
         .then(data => console.log(data))
           .catch(error => { throw new Error(error) });
   }
+
+  searched() {
+    let city = this.state.selectedCity;
+    let state = this.state.selectedState;
+
+    fetch(`http://api.wunderground.com/api/${Key}/conditions/q/${state}/${city}.json`)
+      .then(response => response.json())
+        .then(data => console.log(data))
+          .catch(error => { throw new Error(error) });
+  }
+
+
 
   updateCity = (city) => {
     let newCity = city;
