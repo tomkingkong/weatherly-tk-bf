@@ -26,7 +26,7 @@ export default class Search extends Component {
           placeholder="CITY"
           onChange={ (e) => {
             this.setState({ 
-              userCityInput: e.target.value
+              userCityInput: e.target.value.toUpperCase()
             })
           }}
         />
@@ -38,7 +38,7 @@ export default class Search extends Component {
         placeholder="STATE"
         onChange={ (e) => {
           this.setState({
-            userStateInput: e.target.value
+            userStateInput: e.target.value.toUpperCase()
           })
         }}
         />

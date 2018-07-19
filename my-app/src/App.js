@@ -11,18 +11,18 @@ class App extends Component {
     super();
 
     this.state = {
-      selectedCity: 'Denver',
+      selectedCity: 'DENVER',
       selectedState: 'CO',
       selectedCondition: '',
       selectedTemp: '',
-      selectedHigh: 0,
-      selectedLow: 0,
+      selectedHigh: '',
+      selectedLow: '',
       selectedSummary: ''
     }
   }
 
   componentDidMount() {
-    fetch(`http://api.wunderground.com/api/${Key}/conditions/q/co/denver.json`)
+    fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/co/denver.json`)
       .then(response => response.json())
         .then(data => console.log(data))
           .catch(error => { throw new Error(error) });
@@ -36,7 +36,7 @@ class App extends Component {
       selectedState: newState
     })
 
-    fetch(`http://api.wunderground.com/api/${Key}/conditions/q/${newState}/${newCity}.json`)
+    fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${newState}/${newCity}.json`)
       .then(response => response.json())
         .then(data => console.log(data))
           .catch(error => { throw new Error(error) });
@@ -49,6 +49,7 @@ class App extends Component {
         <Search updateLocation={this.updateLocation}/>
         <CurrentWeather 
          currentCity={this.state.selectedCity}
+         currentState={this.state.selectedState}
          currentDay={this.state.selectedDay}
          currentCondition={this.state.selectedCondition}
          currentTemp={this.state.selectedTemp}
