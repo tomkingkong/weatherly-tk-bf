@@ -24,7 +24,17 @@ class App extends Component {
   componentDidMount() {
     fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/co/denver.json`)
       .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+          this.setState({
+            selectedCondition: data.forecast.simpleforecast.forecastday[0].conditions,
+            selectedDay: data.forecast.simpleforecast.forecastday[0].date.weekday,
+            selectedTemp: data.current_observation.temp_f,
+            selectedHigh: data.forecast.simpleforecast.forecastday[0].high.fahrenheit,
+            selectedLow: data.forecast.simpleforecast.forecastday[0].low.fahrenheit,
+            selectedSummary: data.forecast.txt_forecast.forecastday[0].fcttext
+          })
+          console.log(data)
+        })
           .catch(error => { throw new Error(error) });
   }
 
@@ -38,7 +48,17 @@ class App extends Component {
 
     fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${newState}/${newCity}.json`)
       .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+          this.setState({
+            selectedCondition: data.forecast.simpleforecast.forecastday[0].conditions,
+            selectedDay: data.forecast.simpleforecast.forecastday[0].date.weekday,
+            selectedTemp: data.current_observation.temp_f,
+            selectedHigh: data.forecast.simpleforecast.forecastday[0].high.fahrenheit,
+            selectedLow: data.forecast.simpleforecast.forecastday[0].low.fahrenheit,
+            selectedSummary: data.forecast.txt_forecast.forecastday[0].fcttext
+          })
+          console.log(data)
+        })
           .catch(error => { throw new Error(error) });
   }
 
@@ -55,7 +75,7 @@ class App extends Component {
          currentTemp={this.state.selectedTemp}
          currentHigh={this.state.selectedHigh}
          currentLow={this.state.selectedLow}
-         currentSummary={this.state.selectedSummary}
+         summary={this.state.selectedSummary}
         />
       </div>
     );

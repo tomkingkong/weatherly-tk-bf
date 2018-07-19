@@ -8,9 +8,7 @@ const CurrentWeather = (props) => {
       <h4>{props.currentDay}</h4>
       <p>{props.currentCondition}</p>
       <p>{props.currentTemp}</p>
-      <p>{props.currentHigh} 
-        <span>{props.currentLow}</span>
-      </p>
+      <p>{props.currentHigh} {props.currentLow}</p>
       <p>{props.summary}</p>
     </section>
   )
