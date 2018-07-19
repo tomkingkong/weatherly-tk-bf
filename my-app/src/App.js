@@ -11,9 +11,10 @@ import Key from './Key.js'
 class App extends Component {
 
   componentDidMount() {
-    fetch(`http://api.wunderground.com/api/${Key}/geolookup/conditions/hourly/forecast10day/q/denver.json`) //add user input in place of Denver.
+    fetch(`http://api.wunderground.com/api/${Key}/conditions/q/co/Denver.json`) //add user input in place of Denver.
     .then(response => response.json()).then(data => console.log(data));
   }
+
 
   render() {
     return (
