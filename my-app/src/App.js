@@ -13,14 +13,25 @@ class App extends Component {
     super();
 
     this.state = {
+      selectedCity: '',
+      selectedDay: '',
+      selectedCondition: '',
+      selectedTemp: '',
+      selectedHigh: 0,
+      selectedLow: 0,
+      selectedSummary: ''
 
     }
   }
 
   componentDidMount() {
-    let city = 'Denver';
-    fetch(`http://api.wunderground.com/api/${Key}/conditions/q/co/${city}.json`) //add user input in place of Denver.
-    .then(response => response.json()).then(data => console.log(data));
+    let city = this.state.selectedCity;
+    let state = this.state.selectedState;
+
+    fetch(`http://api.wunderground.com/api/${Key}/conditions/q/${state}/${city}.json`) //add user input in place of Denver.
+      .then(response => response.json())
+        .then(data => console.log(data))
+          .catch(error => { throw new Error(error) });
   }
 
   render() {
@@ -28,7 +39,15 @@ class App extends Component {
       <div className="App">
         <Header />
         <Search />
-        <CurrentWeather />
+        <CurrentWeather 
+         currentCity={this.state.selectedCity}
+         currentDay={this.state.selectedDay}
+         currentCondition={this.state.selectedCondition}
+         currentTemp={this.state.selectedTemp}
+         currentHigh={this.state.selectedHigh}
+         currentLow={this.state.selectedLow}
+         currentSummary={this.state.selectedSummary}
+        />
       </div>
     );
   }
