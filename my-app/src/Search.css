@@ -1,16 +1,22 @@
 .Search {
-  margin: 2rem;
+  margin: 1rem;
 }
 
 .Search input {
-  width: 15rem;
-  height: 1.5rem;
-  border-radius: 0.2rem;
   border: 0.1rem solid cadetblue;
+  border-radius: 0.2rem;
+  text-align: center;
+  margin: 0 0.1rem;
+  width: 10rem;
+  height: 1.5rem;
+}
+
+.Search .state-input {
+  width: 3rem;
 }
 
 button {
-  margin: 0 1rem;
-  height: 1.8rem;
   border-radius: 0.2rem;
+  margin: 0 0.2rem;
+  height: 1.8rem;
 }

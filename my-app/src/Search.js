@@ -1,40 +1,46 @@
 import React, { Component } from 'react';
 import './Search.css'
 
-
-
 export default class Search extends Component {
   constructor() {
     super();
     this.state = {
-      userInput: ''
+      userCityInput: '',
+      userStateInput: ''
     }
-    this.submitCity = this.submitCity.bind(this);
   } // end of constructor
-
-  submitCity(e) {
-    e.preventDefault()
-    console.log(this.state.userInput);
-    this.setState({
-      userInput: ''
-    })
-
-  }
 
   render() {
     return (
       <form className="Search" onSubmit={ (e) => {
-        this.submitCity(e) 
+        e.preventDefault();
+        this.props.updateLocation(this.state.userCityInput, this.state.userStateInput)
+        this.setState({
+          userCityInput: '',
+          userStateInput: ''
+        })
       }}>
         <input 
           type="text" 
-          value={this.state.userInput}
-          placeholder="Select a city..."
+          value={this.state.userCityInput}
+          placeholder="CITY"
           onChange={ (e) => {
             this.setState({ 
-              userInput: e.target.value
+              userCityInput: e.target.value
             })
           }}
+        />
+        <input 
+        className="state-input"
+        type="text"
+        maxLength="2"
+        value={this.state.userStateInput}
+        placeholder="STATE"
+        onChange={ (e) => {
+          this.setState({
+            userStateInput: e.target.value
+          })
+        }}
         />
         <button>Submit</button>
       </form>
