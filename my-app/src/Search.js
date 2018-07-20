@@ -23,7 +23,7 @@ export default class Search extends Component {
         <input 
           type="text" 
           value={this.state.userCityInput}
-          placeholder="CITY"
+          placeholder="CITY / ZIP"
           onChange={ (e) => {
             this.setState({ 
               userCityInput: e.target.value.toUpperCase()

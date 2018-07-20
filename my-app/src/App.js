@@ -26,6 +26,8 @@ class App extends Component {
       .then(response => response.json())
         .then(data => {
           this.setState({
+            selectedCity: data.current_observation.display_location.city.toUpperCase(),
+            selectedState: data.current_observation.display_location.state,
             selectedCondition: data.forecast.simpleforecast.forecastday[0].conditions,
             selectedDay: data.forecast.simpleforecast.forecastday[0].date.weekday,
             selectedTemp: data.current_observation.temp_f,
@@ -50,6 +52,8 @@ class App extends Component {
       .then(response => response.json())
         .then(data => {
           this.setState({
+            selectedCity: data.current_observation.display_location.city.toUpperCase(),
+            selectedState: data.current_observation.display_location.state,
             selectedCondition: data.forecast.simpleforecast.forecastday[0].conditions,
             selectedDay: data.forecast.simpleforecast.forecastday[0].date.weekday,
             selectedTemp: data.current_observation.temp_f,
@@ -61,6 +65,28 @@ class App extends Component {
         })
           .catch(error => { throw new Error(error) });
   }
+
+  // 7 hour info
+  /* 
+  // The hour
+  data.forecast.simpleforecast.forecastday[0].conditions
+
+  //an Image reflecting the weather
+
+  // The projected temp
+
+  */
+
+
+  // 10 day info
+  /*
+  // Name of day
+
+  // Image that reflects the weather
+
+  // the projected high and low temps
+
+  */
 
   render() {
     return (
