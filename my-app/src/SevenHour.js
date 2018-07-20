@@ -2,10 +2,10 @@ import React from 'react';
 import './SevenHour.css';
 
 
-export default function SevenHour(props) {
+export default SevenHour = (props) => {
   return (
     <div className="SevenHour">
-      <p>Seven Hour</p>
+      <Card selectedHour={props.selectedHour} />
     </div>
   )
 }

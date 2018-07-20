@@ -1,8 +1,7 @@
 import React from 'react';
 import './TenDay.css';
 
-
-export default function TenDay(props) {
+export default TenDay = (props) => {
   return (
     <div className="TenDay">
       <p>Ten Day</p>
