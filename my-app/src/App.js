@@ -67,25 +67,26 @@ class App extends Component {
   }
 
   // 7 hour info
-  /* 
+  /* // data.hourly_forecast = array of 36 hour objects, [0] = current hour
   // The hour
-  data.forecast.simpleforecast.forecastday[0].conditions
+      data.hourly_forecast[0].FCTTIME.civil = '7:00 PM'
 
-  //an Image reflecting the weather
-
+  // Image reflecting the weather
+      data.hourly_forecast[0].icon_url 
   // The projected temp
-
+      data.hourly_forecast[0].temp.english = '95.9' 
   */
 
 
   // 10 day info
-  /*
+  /* data.forecast.simpleforecast.forecastday = array of 10 day objects
   // Name of day
-
+      data.forecast.simpleforecast.forecastday[0].date.weekday = 'Thursday'
   // Image that reflects the weather
-
+      data.forecast.simpleforecast.forecastday[0].icon_url
   // the projected high and low temps
-
+      data.forecast.simpleforecast.forecastday[0].high.fahrenheit = '103'
+      data.forecast.simpleforecast.forecastday[0].low.fahrenheit = '67'
   */
 
   render() {
