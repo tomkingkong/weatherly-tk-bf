@@ -14,7 +14,8 @@ const TenDay = (props) => {
             temp={day.high.fahrenheit}
           />
         )
-      })}
+      })
+    }
     </div>
   )
 }
