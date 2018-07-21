@@ -22,15 +22,11 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-    let currState = this.state.selectedState;
-    let currCity = this.state.selectedCity;
-    let weatherDataObj;
-
-    fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${currState}/${currCity}.json`)
+  updateCurrentData = (Key, state, city) => {
+    fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${state}/${city}.json`)
     .then(response => response.json())
     .then(data => {
-      weatherDataObj = returnWeatherData(data)
+      let weatherDataObj = returnWeatherData(data)
       this.setState({
         currWeatherObj: weatherDataObj.currWeatherObj,
         hourlyArray: weatherDataObj.hourlyArray,
@@ -40,28 +36,23 @@ class App extends Component {
     .catch(error => { throw new Error(error) });
   }
 
-  updateLocation = (city, state) => {
+  componentDidMount() {
+    let currState = this.state.selectedState;
+    let currCity = this.state.selectedCity;
+
+    this.updateCurrentData(Key, currState, currCity);
+  }
+
+  updateLocation = (Key, city, state) => {
     let newCity = city;
     let newState = state;
-    let weatherDataObj;
 
     this.setState({
       selectedCity: newCity,
       selectedState: newState
     })
 
-    fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${newState}/${newCity}.json`)
-    .then(response => response.json())
-    .then(data => {
-      weatherDataObj = returnWeatherData(data);
-      this.setState({
-        currWeatherObj: weatherDataObj.currWeatherObj,
-        hourlyArray: weatherDataObj.hourlyArray,
-        tenDayArray: weatherDataObj.tenDayArray
-      })
-    })
-    .catch(error => { throw new Error(error) });
-
+    this.updateCurrentData(Key, newState, newCity);
   }
 
   render() {
