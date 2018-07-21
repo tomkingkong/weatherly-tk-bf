@@ -1,11 +1,15 @@
 import React from 'react';
+
+import Card from './Card.js';
 import './SevenHour.css';
 
 
-export default SevenHour = (props) => {
+const SevenHour = (props) => {
   return (
     <div className="SevenHour">
-      <Card selectedHour={props.selectedHour} />
+    <h1>{props.updateSevenHour}</h1>
     </div>
   )
 }
+
+export default SevenHour;

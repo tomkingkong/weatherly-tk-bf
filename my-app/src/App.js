@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
 import './App.css';
+import Key from './Key.js';
 import Header from './Header.js';
 import Search from './Search.js';
+import Handler from './Handler.js';
 import CurrentWeather from './CurrentWeather.js';
-import Key from './Key.js';
+import SevenHour from './SevenHour';
 
 class App extends Component {
   constructor() {
@@ -17,7 +19,9 @@ class App extends Component {
       selectedTemp: '',
       selectedHigh: '',
       selectedLow: '',
-      selectedSummary: ''
+      selectedSummary: '',
+      city: '',
+      data: ''
     }
   }
 
@@ -26,6 +30,7 @@ class App extends Component {
       .then(response => response.json())
         .then(data => {
           this.setState({
+            data: data,
             selectedCity: data.current_observation.display_location.city.toUpperCase(),
             selectedState: data.current_observation.display_location.state,
             selectedCondition: data.forecast.simpleforecast.forecastday[0].conditions,
@@ -40,6 +45,17 @@ class App extends Component {
           .catch(error => { throw new Error(error) });
   }
 
+  updateSevenHour = (sevenHourData) => {
+    let sevenHour = sevenHourData;
+
+    console.log(sevenHour)
+    
+    this.setState({
+      city: sevenHour
+    })
+
+  }
+
   updateLocation = (city, state) => {
     let newCity = city;
     let newState = state;
@@ -52,6 +68,7 @@ class App extends Component {
       .then(response => response.json())
         .then(data => {
           this.setState({
+            data: data,
             selectedCity: data.current_observation.display_location.city.toUpperCase(),
             selectedState: data.current_observation.display_location.state,
             selectedCondition: data.forecast.simpleforecast.forecastday[0].conditions,
@@ -90,6 +107,8 @@ class App extends Component {
   */
 
   render() {
+    
+    <Handler updateSevenHour={this.updateSevenHour} />
     return (
       <div className="App">
         <Header />
@@ -104,6 +123,7 @@ class App extends Component {
          currentLow={this.state.selectedLow}
          summary={this.state.selectedSummary}
         />
+        <SevenHour updateSevenHour={this.updateSevenHour} />
       </div>
     );
   }

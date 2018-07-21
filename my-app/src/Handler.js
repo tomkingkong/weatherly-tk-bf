@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Handler extends Component {
-  constructor() {
-    super();
-    this.state = {
-      userCityInput: '',
-      userStateInput: ''
-    }
-  } // end of constructor
-  
+const Handler = (props) => {
+  return (
+
+    props.updateSevenHour(props.promise.current_observation.display_location.city)
+  )
 }
+
+export default Handler;

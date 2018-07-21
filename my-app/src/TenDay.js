@@ -1,10 +1,14 @@
 import React from 'react';
+
+import Card from './Card.js';
 import './TenDay.css';
 
-export default TenDay = (props) => {
+const TenDay = (props) => {
   return (
     <div className="TenDay">
       <p>Ten Day</p>
     </div>
   )
 }
+
+export default TenDay;

@@ -1,7 +1,8 @@
 import React from 'react';
+
 import './Card.css';
 
-export default Card = (props) => {
+const Card = (props) => {
   return (
     <article className="Card">
 {props.selectedDay}
@@ -13,7 +14,7 @@ export default Card = (props) => {
   )
 }
 
- 
+export default Card;
 
 
 
