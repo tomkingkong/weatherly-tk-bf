@@ -5,6 +5,7 @@ import './Card.css';
 const Card = (props) => {
   return (
     <article className="Card">
+      <p>{props.month}</p>
       <p>{props.day}</p>
       <p>{props.hour}</p>
       <p>{props.temp}</p>
