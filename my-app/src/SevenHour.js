@@ -7,7 +7,9 @@ import './SevenHour.css';
 const SevenHour = (props) => {
   return (
     <div className="SevenHour">
-    <h1>{props.updateSevenHour}</h1>
+      {
+        props.hourlyArray.map(hour => <p>{hour.FCTTIME.civil}</p>)
+      }
     </div>
   )
 }

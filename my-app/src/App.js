@@ -20,8 +20,8 @@ class App extends Component {
       selectedHigh: '',
       selectedLow: '',
       selectedSummary: '',
-      city: '',
-      data: ''
+      sevenHour: [],
+      tendDay: []
     }
   }
 
@@ -29,6 +29,7 @@ class App extends Component {
     fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/co/denver.json`)
       .then(response => response.json())
         .then(data => {
+          this.updateSevenHour(data);
           this.setState({
             data: data,
             selectedCity: data.current_observation.display_location.city.toUpperCase(),
@@ -45,13 +46,11 @@ class App extends Component {
           .catch(error => { throw new Error(error) });
   }
 
-  updateSevenHour = (sevenHourData) => {
-    let sevenHour = sevenHourData;
+  updateSevenHour = (data) => {
+    let hourlyArray = data.hourly_forecast;
 
-    console.log(sevenHour)
-    
     this.setState({
-      city: sevenHour
+      sevenHour: hourlyArray
     })
 
   }
@@ -67,6 +66,7 @@ class App extends Component {
     fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${newState}/${newCity}.json`)
       .then(response => response.json())
         .then(data => {
+          this.updateSevenHour(data);
           this.setState({
             data: data,
             selectedCity: data.current_observation.display_location.city.toUpperCase(),
@@ -108,7 +108,6 @@ class App extends Component {
 
   render() {
     
-    <Handler updateSevenHour={this.updateSevenHour} />
     return (
       <div className="App">
         <Header />
@@ -123,7 +122,7 @@ class App extends Component {
          currentLow={this.state.selectedLow}
          summary={this.state.selectedSummary}
         />
-        <SevenHour updateSevenHour={this.updateSevenHour} />
+        <SevenHour hourlyArray={this.state.sevenHour} />
       </div>
     );
   }
