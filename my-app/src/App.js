@@ -17,6 +17,7 @@ class App extends Component {
       selectedCity: 'DENVER',
       selectedState: 'CO',
       selectedCondition: '',
+      selectedIcon: '',
       selectedTemp: '',
       selectedHigh: '',
       selectedLow: '',
@@ -36,6 +37,7 @@ class App extends Component {
             selectedCity: data.current_observation.display_location.city.toUpperCase(),
             selectedState: data.current_observation.display_location.state,
             selectedCondition: data.forecast.simpleforecast.forecastday[0].conditions,
+            selectedIcon: data.current_observation.icon_url,
             selectedDay: data.forecast.simpleforecast.forecastday[0].date.weekday,
             selectedTemp: data.current_observation.temp_f,
             selectedHigh: data.forecast.simpleforecast.forecastday[0].high.fahrenheit,
@@ -121,6 +123,7 @@ class App extends Component {
          currentState={this.state.selectedState}
          currentDay={this.state.selectedDay}
          currentCondition={this.state.selectedCondition}
+         currentIcon={this.state.selectedIcon}
          currentTemp={this.state.selectedTemp}
          currentHigh={this.state.selectedHigh}
          currentLow={this.state.selectedLow}
