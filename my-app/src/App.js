@@ -21,7 +21,7 @@ class App extends Component {
       selectedLow: '',
       selectedSummary: '',
       sevenHour: [],
-      tendDay: []
+      tenDay: []
     }
   }
 
@@ -29,7 +29,7 @@ class App extends Component {
     fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/co/denver.json`)
       .then(response => response.json())
         .then(data => {
-          this.updateSevenHour(data);
+          this.updateWeatherComponents(data);
           this.setState({
             data: data,
             selectedCity: data.current_observation.display_location.city.toUpperCase(),
@@ -46,13 +46,14 @@ class App extends Component {
           .catch(error => { throw new Error(error) });
   }
 
-  updateSevenHour = (data) => {
+  updateWeatherComponents = (data) => {
     let hourlyArray = data.hourly_forecast;
+    let tenDayArray = data.forecast.simpleforecast.forecastday;
 
     this.setState({
-      sevenHour: hourlyArray
+      sevenHour: hourlyArray,
+      tenDay: tenDayArray
     })
-
   }
 
   updateLocation = (city, state) => {
@@ -66,7 +67,7 @@ class App extends Component {
     fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${newState}/${newCity}.json`)
       .then(response => response.json())
         .then(data => {
-          this.updateSevenHour(data);
+          this.updateWeatherComponents(data);
           this.setState({
             data: data,
             selectedCity: data.current_observation.display_location.city.toUpperCase(),
