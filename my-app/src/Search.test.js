@@ -1,16 +1,17 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import App from './App';
+import Search from './Search';
 
-describe( 'App', () => {
+describe( 'Search', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<App />);
+    wrapper = shallow(<Search />);
   })
 
   it( 'should exist', () => {
     expect(wrapper).toBeDefined();
   });
+
 });
