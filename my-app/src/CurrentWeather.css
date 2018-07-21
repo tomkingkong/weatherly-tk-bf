@@ -14,10 +14,16 @@
 .CurrentWeather .right-section {
   display: flex;
   flex-direction: column;
+  margin-left: 21rem;
 }
 
 .CurrentWeather span {
   display: flex;
   flex-direction: row;
+  width: 16rem;
   
+}
+
+.CurrentWeather span img {
+
 }
