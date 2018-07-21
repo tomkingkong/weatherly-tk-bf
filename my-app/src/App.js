@@ -7,6 +7,7 @@ import Search from './Search.js';
 import Handler from './Handler.js';
 import CurrentWeather from './CurrentWeather.js';
 import SevenHour from './SevenHour';
+import TenDay from './TenDay';
 
 class App extends Component {
   constructor() {
@@ -124,6 +125,7 @@ class App extends Component {
          summary={this.state.selectedSummary}
         />
         <SevenHour hourlyArray={this.state.sevenHour} />
+        <TenDay tenDayArray={this.state.tenDay} />
       </div>
     );
   }
