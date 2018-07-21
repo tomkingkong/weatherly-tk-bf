@@ -1,12 +1,19 @@
 .Card {
   display: flex;
-  min-width: 320px;
-  width: 65%;
+  flex-flow: column;
   border: 0.2rem solid cadetblue;
   justify-content: center;
   margin: 0 auto;
+  height: 5rem;
+  width: 5rem;
 }
 
-.Card button {
+p {
+  margin: 0;
+}
 
+img {
+  margin: 0 auto;
+  height: 2rem;
+  width: 2rem;
 }
