@@ -2,16 +2,36 @@ import React from 'react';
 import './CurrentWeather.css';
 
 const CurrentWeather = (props) => {
+  const { 
+    currentCity, 
+    currentState, 
+    currentCondition, 
+    currentDay, 
+    currentTemp, 
+    summary, 
+    currentHigh, 
+    currentLow,
+    currentIcon 
+  } = props.currWeatherObj
+
   return (
     <section className="CurrentWeather">
-      <h3>{props.currentCity}, {props.currentState}</h3>
-      <h4>{props.currentDay}</h4>
-      <p>{props.currentCondition}</p>
-      <p>{props.currentTemp}</p>
-      <p>{props.currentHigh} {props.currentLow}</p>
-      <p>{props.summary}</p>
+      <div className="left-section">
+        <h3>{currentCity}, {currentState}</h3>
+        <h4>{currentDay}</h4>
+        <p>{currentTemp}°</p>
+      </div>
+      <div className="right-section">
+        <span>
+          <p>{currentCondition}</p>
+          <img src={currentIcon} />
+        </span>
+        <p>{currentHigh} {currentLow}</p>
+        <p>{summary}</p>
+      </div>
     </section>
   )
 }
 
 export default CurrentWeather;
+
