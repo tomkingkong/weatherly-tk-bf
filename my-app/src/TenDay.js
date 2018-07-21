@@ -6,7 +6,15 @@ import './TenDay.css';
 const TenDay = (props) => {
   return (
     <div className="TenDay">
-      <p>Ten Day</p>
+      {props.tenDayArray.map(day => {
+        return(
+          <Card 
+            day={day.date.pretty}
+            icon={day.icon_url}
+            temp={day.high.fahrenheit}
+          />
+        )
+      })}
     </div>
   )
 }
