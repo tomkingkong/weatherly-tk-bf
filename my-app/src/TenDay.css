@@ -7,8 +7,19 @@
 }
 
 .TenDay .Card {
-  height: 8rem;
+  height: 4rem;
   float: left;
-  margin: 0;
-  width: 100%;
+  width: 67%;
+  display: flex;
+  flex-direction: row;
+  font-size: 2rem;
+}
+
+.TenDay .Card p {
+  margin: 1rem;
+}
+
+.TenDay .Card img {
+  width: 4rem;
+  height: 4rem;
 }
