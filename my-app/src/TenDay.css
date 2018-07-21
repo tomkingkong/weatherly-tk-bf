@@ -1,3 +1,14 @@
 .TenDay {
-  
+  display: flex;
+  flex-direction: column;
+  float: left;
+  margin-left: 1rem;
+  width: 96vw;
+}
+
+.TenDay .Card {
+  height: 8rem;
+  float: left;
+  margin: 0;
+  width: 100%;
 }

@@ -50,6 +50,8 @@ class App extends Component {
   updateWeatherComponents = (data) => {
     let hourlyArray = data.hourly_forecast;
     let tenDayArray = data.forecast.simpleforecast.forecastday;
+    console.log(tenDayArray)
+    console.log(hourlyArray)
 
     this.setState({
       sevenHour: hourlyArray,
