@@ -7,6 +7,7 @@ import Search from './Search.js';
 import Handler from './Handler.js';
 import CurrentWeather from './CurrentWeather.js';
 import SevenHour from './SevenHour';
+import TenDay from './TenDay';
 
 class App extends Component {
   constructor() {
@@ -20,8 +21,8 @@ class App extends Component {
       selectedHigh: '',
       selectedLow: '',
       selectedSummary: '',
-      city: '',
-      data: ''
+      sevenHour: [],
+      tenDay: []
     }
   }
 
@@ -29,6 +30,7 @@ class App extends Component {
     fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/co/denver.json`)
       .then(response => response.json())
         .then(data => {
+          this.updateWeatherComponents(data);
           this.setState({
             data: data,
             selectedCity: data.current_observation.display_location.city.toUpperCase(),
@@ -45,15 +47,14 @@ class App extends Component {
           .catch(error => { throw new Error(error) });
   }
 
-  updateSevenHour = (sevenHourData) => {
-    let sevenHour = sevenHourData;
+  updateWeatherComponents = (data) => {
+    let hourlyArray = data.hourly_forecast;
+    let tenDayArray = data.forecast.simpleforecast.forecastday;
 
-    console.log(sevenHour)
-    
     this.setState({
-      city: sevenHour
+      sevenHour: hourlyArray,
+      tenDay: tenDayArray
     })
-
   }
 
   updateLocation = (city, state) => {
@@ -67,6 +68,7 @@ class App extends Component {
     fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${newState}/${newCity}.json`)
       .then(response => response.json())
         .then(data => {
+          this.updateWeatherComponents(data);
           this.setState({
             data: data,
             selectedCity: data.current_observation.display_location.city.toUpperCase(),
@@ -108,7 +110,6 @@ class App extends Component {
 
   render() {
     
-    <Handler updateSevenHour={this.updateSevenHour} />
     return (
       <div className="App">
         <Header />
@@ -123,7 +124,8 @@ class App extends Component {
          currentLow={this.state.selectedLow}
          summary={this.state.selectedSummary}
         />
-        <SevenHour updateSevenHour={this.updateSevenHour} />
+        <SevenHour hourlyArray={this.state.sevenHour} />
+        <TenDay tenDayArray={this.state.tenDay} />
       </div>
     );
   }
