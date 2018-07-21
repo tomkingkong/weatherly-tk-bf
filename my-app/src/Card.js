@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
+
 import './Card.css';
-import SevenHour from './SevenHour.js'
-import TenDay from './TenDay.js'
+
+const Card = (props) => {
+  return (
+    <article className="Card">
+{props.selectedDay}
+{props.selectedTemp}
+{props.selectedHigh}
+{props.selectedLow}
+{props.selectedHour}
+    </article>
+  )
+}
+
+export default Card;
 
 
 
-export default class Card extends Component {
-  constructor(props) {
-    super();
-
-    this.state = {
-
-    }
-  } //end of constructor
-
-  render() {
-
-
-    return (
-      <article className="Card">
-        
-
-      </article>
-    )
-  }
-
-} //end of class
+  
