@@ -9,9 +9,11 @@ const TenDay = (props) => {
       {props.tenDayArray.map(day => {
         return(
           <Card 
-            day={day.date.pretty}
+            month={day.date.month}
+            day={day.date.day}
             icon={day.icon_url}
-            temp={day.high.fahrenheit}
+            high={day.high.fahrenheit}
+            low={day.low.fahrenheit}
           />
         )
       })
