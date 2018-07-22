@@ -12,9 +12,9 @@ const SevenHour = (props) => {
         hourlyArray.map(hour => {
           return ( 
             <Card 
-              hour={hour.FCTTIME.civil}
-              icon={hour.icon_url}
-              temp={`${hour.temp.english}°`}
+              hour={hour.hour}
+              icon={hour.icon}
+              temp={`${hour.temp}°`}
             />
           )
         })

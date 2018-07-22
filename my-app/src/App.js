@@ -23,7 +23,9 @@ class App extends Component {
   }
 
   getStorageLocation = (storeKey) => {
-    return JSON.parse(localStorage.getItem(storeKey));
+    if (localStorage.getItem(storeKey)) {
+      return JSON.parse(localStorage.getItem(storeKey));
+    }
   }
 
   setStorageLocation = (storeKey, storeItem) => {
@@ -31,35 +33,31 @@ class App extends Component {
   }
 
   updateCurrentData = (loc) => {
-    fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${loc}/.json`)
-    .then(response => response.json())
-    .then(data => {
-      let weatherDataObj = returnWeatherData(data);
-      this.setStorageLocation('savedLoc', data.current_observation.display_location.zip);
-      this.setState({
-        searchError: false,
-        currWeatherObj: weatherDataObj.currWeatherObj,
-        hourlyArray: weatherDataObj.hourlyArray,
-        tenDayArray: weatherDataObj.tenDayArray
-      })
-    })
-    .catch(error => { throw new Error(error) })
-    .catch(err => {
-      if (this.state.selectedLocation !== null) {
+    if (loc) {
+      fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${loc}/.json`)
+      .then(response => response.json())
+      .then(data => {
+        let weatherDataObj = returnWeatherData(data);
+        this.setStorageLocation('savedLoc', data.current_observation.display_location.zip);
         this.setState({
-          searchError: true
+          searchError: false,
+          currWeatherObj: weatherDataObj.currWeatherObj,
+          hourlyArray: weatherDataObj.hourlyArray,
+          tenDayArray: weatherDataObj.tenDayArray
         })
-      }
-      console.log(err)
-    })
+      })
+      .catch(error => { throw new Error(error) })
+      .catch(err => {
+        this.setState({
+          searchError: true,
+        })
+        console.log(err)
+      })
+    }
   }
 
   componentDidMount() {
     let loc = this.getStorageLocation('savedLoc');
-
-    if (!loc) {
-      loc = this.state.selectedLocation;
-    }
 
     this.setState({
       selectedLocation: loc
@@ -80,30 +78,27 @@ class App extends Component {
 
   displayPage = () => {
     const { currWeatherObj, hourlyArray, tenDayArray, searchError, selectedLocation } = this.state;
-    if (!selectedLocation) {
+    if (selectedLocation && !searchError) {
       return (
         <React.Fragment>
-          <Header />
-          <Search updateLocation={this.updateLocation} ifError={searchError} loc={selectedLocation} /> 
+          <CurrentWeather currWeatherObj={currWeatherObj} />
+          <SevenHour hourlyArray={hourlyArray} />
+          <TenDay tenDayArray={tenDayArray} />
         </React.Fragment>
       )
     }
-    return (
-      <React.Fragment>
-        <Search updateLocation={this.updateLocation} ifError={searchError} loc={selectedLocation} />
-        <CurrentWeather currWeatherObj={currWeatherObj} />
-        <SevenHour hourlyArray={hourlyArray} />
-        <TenDay tenDayArray={tenDayArray} />
-      </React.Fragment>
-    )
   }
 
   render() {
+    const { searchError, selectedLocation } = this.state;
+
     return (
       <div className="App">
-       {
-         this.displayPage()
-       }
+        <Header />
+        <Search updateLocation={this.updateLocation} ifError={searchError} loc={selectedLocation} /> 
+        {
+          this.displayPage()
+        }
       </div>
     );
   }
