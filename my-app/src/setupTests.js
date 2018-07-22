@@ -4,13 +4,17 @@ import Adapter from 'enzyme-adapter-react-16';
 configure({ adapter: new Adapter() });
 
 
-class API {
+class LocalStorage {
   constructor() {
     this.store = {};
   }
 
-  fetch(key) {
+  getItem(key) {
     return this.store[key];
+  }
+
+  setItem(key, string) {
+    this.store[key] = string;
   }
 
   clear() {
@@ -18,5 +22,5 @@ class API {
   }
 }
 
-global.api = new API;
+global.localStorage = new LocalStorage;
 

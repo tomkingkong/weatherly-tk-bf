@@ -14,12 +14,8 @@ describe( 'App', () => {
     expect(wrapper).toBeDefined();
   });
 
-  it('should have a default selectedCity of Denver', () => {
-    expect(wrapper.state().selectedCity).toEqual('DENVER');
-  })
-
-  it('should have have a default selectedState of CO', () => {
-    expect(wrapper.state().selectedState).toEqual('CO');
+  it('should have a default selectedLocation of an empty string', () => {
+    expect(wrapper.state().selectedLocation).toEqual('');
   })
 
   it('should have a default currentWeatherObj which is an empty object', () => {
@@ -30,6 +26,8 @@ describe( 'App', () => {
     expect(wrapper.state().hourlyArray).toEqual([]);
   })
 
- 
+ it('should have a default tenDayArray of an empty array', () => {
+    expect(wrapper.state().tenDayArray).toEqual([]);
+ })
 
 });

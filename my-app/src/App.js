@@ -23,7 +23,9 @@ class App extends Component {
   }
 
   getStorageLocation = (storeKey) => {
+    if(localStorage.getItem(storeKey)) {
     return JSON.parse(localStorage.getItem(storeKey));
+    }
   }
 
   setStorageLocation = (storeKey, storeItem) => {
