@@ -30,6 +30,6 @@ describe( 'App', () => {
     expect(wrapper.state().hourlyArray).toEqual([]);
   })
 
-  it('should')
+ 
 
 });

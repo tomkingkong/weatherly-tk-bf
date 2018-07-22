@@ -14,7 +14,7 @@ const SevenHour = (props) => {
             <Card 
               hour={hour.FCTTIME.civil}
               icon={hour.icon_url}
-              temp={hour.temp.english}
+              temp={`${hour.temp.english}°`}
             />
           )
         })
