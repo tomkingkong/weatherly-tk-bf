@@ -59,6 +59,10 @@ class App extends Component {
       loc = this.state.selectedLocation;
     }
 
+    this.setState({
+      selectedLocation: loc
+    })
+
     this.updateCurrentData(loc);
   }
 
