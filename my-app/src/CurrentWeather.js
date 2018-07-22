@@ -20,7 +20,7 @@ const CurrentWeather = (props) => {
       <div className="left-section">
         <h3>{currentCity}, {currentState}</h3>
         <h4>{currentDay}</h4>
-        <p>{currentTemp}°</p>
+        <p className="currentTemp">{currentTemp}°</p>
       </div>
       <div className="right-section">
         <span>
