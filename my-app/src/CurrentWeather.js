@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './CurrentWeather.css';
 
 const CurrentWeather = (props) => {
@@ -12,7 +13,7 @@ const CurrentWeather = (props) => {
     currentHigh, 
     currentLow,
     currentIcon 
-  } = props.currWeatherObj
+  } = props.currWeatherObj;
 
   return (
     <section className="CurrentWeather">
@@ -26,7 +27,7 @@ const CurrentWeather = (props) => {
           <p>{currentCondition}</p>
           <img src={currentIcon} />
         </span>
-        <p>{currentHigh} {currentLow}</p>
+        <p>{currentLow}° - {currentHigh}°</p>
         <p>{summary}</p>
       </div>
     </section>

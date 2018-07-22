@@ -1,10 +1,5 @@
 export const returnWeatherData = (data) => {
-    let currWeatherObj = {};
-    let hourlyArray = [];
-    let tenDayArray = [];
-    let weatherDataObj;
-
-    currWeatherObj = {
+    let currWeatherObj = {
       'currentCity': data.current_observation.display_location.city.toUpperCase(),
       'currentState': data.current_observation.display_location.state,
       'currentCondition': data.forecast.simpleforecast.forecastday[0].conditions,
@@ -16,14 +11,8 @@ export const returnWeatherData = (data) => {
       'summary': data.forecast.txt_forecast.forecastday[0].fcttext
     };
 
-    hourlyArray = data.hourly_forecast;
-    tenDayArray = data.forecast.simpleforecast.forecastday;
+    let hourlyArray = data.hourly_forecast;
+    let tenDayArray = data.forecast.simpleforecast.forecastday;
 
-    weatherDataObj = { 
-      currWeatherObj, 
-      hourlyArray, 
-      tenDayArray 
-    }
-
-    return weatherDataObj
+    return { currWeatherObj, hourlyArray, tenDayArray };
 }

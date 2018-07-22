@@ -1,50 +1,46 @@
 import React, { Component } from 'react';
 
-import Key from './Key';
 import './Search.css'
 
 export default class Search extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      userCityInput: '',
-      userStateInput: ''
+      userLocInput: ''
     }
   } // end of constructor
 
+  returnError = () => {
+    const { ifError, loc } = this.props;
+
+    if (ifError) return <h3>{loc} could not be found :( Please enter a different location</h3>
+
+    return;
+  }
+
   render() {
+    const { userLocInput } = this.state;
+
     return (
       <form className="Search" onSubmit={ (e) => {
         e.preventDefault();
-        this.props.updateLocation(Key, this.state.userCityInput, this.state.userStateInput)
+        this.props.updateLocation(userLocInput)
         this.setState({
-          userCityInput: '',
-          userStateInput: ''
+          userLocInput: ''
         })
       }}>
         <input 
           type="text" 
-          value={this.state.userCityInput}
-          placeholder="CITY / ZIP"
+          value={userLocInput}
+          placeholder="CITY, STATE / ZIP"
           onChange={ (e) => {
             this.setState({ 
-              userCityInput: e.target.value.toUpperCase()
+              userLocInput: e.target.value.toUpperCase()
             })
           }}
         />
-        <input 
-        className="state-input"
-        type="text"
-        maxLength="2"
-        value={this.state.userStateInput}
-        placeholder="STATE"
-        onChange={ (e) => {
-          this.setState({
-            userStateInput: e.target.value.toUpperCase()
-          })
-        }}
-        />
         <button>Submit</button>
+        { this.returnError() }
       </form>
     )
   }

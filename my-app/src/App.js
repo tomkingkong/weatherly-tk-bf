@@ -14,54 +14,71 @@ class App extends Component {
     super();
 
     this.state = {
-      selectedCity: 'DENVER',
-      selectedState: 'CO',
+      selectedLocation: 'DENVER, CO',
       currWeatherObj: {},
       hourlyArray: [],
-      tenDayArray: []
+      tenDayArray: [],
+      searchError: false
     }
   }
 
-  updateCurrentData = (Key, state, city) => {
-    fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${state}/${city}.json`)
+  getStorageLocation = (storeKey) => {
+    return JSON.parse(localStorage.getItem(storeKey));
+  }
+
+  setStorageLocation = (storeKey, storeItem) => {
+    return localStorage.setItem(storeKey, JSON.stringify(storeItem));
+  }
+
+  updateCurrentData = (loc) => {
+    fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${loc}/.json`)
     .then(response => response.json())
     .then(data => {
-      let weatherDataObj = returnWeatherData(data)
+      let weatherDataObj = returnWeatherData(data);
+      this.setStorageLocation('savedLoc', data.current_observation.display_location.zip);
       this.setState({
+        searchError: false,
         currWeatherObj: weatherDataObj.currWeatherObj,
         hourlyArray: weatherDataObj.hourlyArray,
         tenDayArray: weatherDataObj.tenDayArray
       })
     })
-    .catch(error => { throw new Error(error) });
+    .catch(error => { throw new Error(error) })
+    .catch(err => {
+      this.setState({
+        searchError: true
+      })
+      console.log(err)
+    })
   }
 
   componentDidMount() {
-    let currState = this.state.selectedState;
-    let currCity = this.state.selectedCity;
+    let loc = this.getStorageLocation('savedLoc');
 
-    this.updateCurrentData(Key, currState, currCity);
+    if (!loc) {
+      loc = this.state.selectedLocation;
+    }
+
+    this.updateCurrentData(loc);
   }
 
-  updateLocation = (Key, city, state) => {
-    let newCity = city;
-    let newState = state;
+  updateLocation = (loc) => {
+    let newLoc = loc;
 
     this.setState({
-      selectedCity: newCity,
-      selectedState: newState
+      selectedLocation: newLoc,
     })
 
-    this.updateCurrentData(Key, newState, newCity);
+    this.updateCurrentData(newLoc);
   }
 
   render() {
-    const { currWeatherObj, hourlyArray, tenDayArray } = this.state
+    const { currWeatherObj, hourlyArray, tenDayArray, searchError, selectedLocation } = this.state;
     
     return (
       <div className="App">
         <Header />
-        <Search updateLocation={this.updateLocation}/>
+        <Search updateLocation={this.updateLocation} ifError={searchError} loc={selectedLocation} />
         <CurrentWeather currWeatherObj={currWeatherObj} />
         <SevenHour hourlyArray={hourlyArray} />
         <TenDay tenDayArray={tenDayArray} />
