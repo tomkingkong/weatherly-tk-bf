@@ -11,13 +11,15 @@ export default class Search extends Component {
   } // end of constructor
 
   returnError = () => {
-    if (this.props.ifError) return <h3>{this.props.loc} could not be found :( Please enter a different location</h3>
+    const { ifError, loc } = this.props;
 
-    return
+    if (ifError) return <h3>{loc} could not be found :( Please enter a different location</h3>
+
+    return;
   }
 
   render() {
-    const { userLocInput } = this.state
+    const { userLocInput } = this.state;
 
     return (
       <form className="Search" onSubmit={ (e) => {
@@ -40,7 +42,6 @@ export default class Search extends Component {
         <button>Submit</button>
         { this.returnError() }
       </form>
-      
     )
   }
 } // end of class
