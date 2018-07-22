@@ -14,7 +14,7 @@ class App extends Component {
     super();
 
     this.state = {
-      selectedLocation: 'ATLANTA, GA',
+      selectedLocation: 'DENVER, CO',
       currWeatherObj: {},
       hourlyArray: [],
       tenDayArray: [],
@@ -35,6 +35,7 @@ class App extends Component {
     .then(response => response.json())
     .then(data => {
       let weatherDataObj = returnWeatherData(data);
+      this.setStorageLocation('savedLoc', data.current_observation.display_location.zip);
       this.setState({
         searchError: false,
         currWeatherObj: weatherDataObj.currWeatherObj,
@@ -52,7 +53,11 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let loc = this.state.selectedLocation;
+    let loc = this.getStorageLocation('savedLoc');
+
+    if (!loc) {
+      loc = this.state.selectedLocation;
+    }
 
     this.updateCurrentData(loc);
   }
