@@ -27,7 +27,7 @@ const CurrentWeather = (props) => {
           <p>{currentCondition}</p>
           <img src={currentIcon} />
         </span>
-        <p>{currentHigh} {currentLow}</p>
+        <p>{currentLow}° - {currentHigh}°</p>
         <p>{summary}</p>
       </div>
     </section>
