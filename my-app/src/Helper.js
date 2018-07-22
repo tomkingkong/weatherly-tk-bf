@@ -18,6 +18,7 @@ export const returnWeatherData = (data) => {
         'temp': hour.temp.english
       }
     })
+    
     let tenDayArray = data.forecast.simpleforecast.forecastday.map(day => {
       return day = {
         'day': day.date.weekday,

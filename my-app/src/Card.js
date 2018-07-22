@@ -10,7 +10,7 @@ const Card = (props) => {
       <div>{props.hour}</div>
       <img src={props.icon} />
       <div>{props.temp}</div>
-      <div>{props.low} - {props.high}</div>
+      <div>{props.low}{props.high}</div>
     </article>
   )
 }

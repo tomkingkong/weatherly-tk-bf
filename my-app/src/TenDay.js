@@ -13,8 +13,8 @@ const TenDay = (props) => {
             <Card 
               day={ day.day }
               icon={ day.icon }
-              high={ `${day.high}°`}
-              low={`${day.low}°`}
+              high={ `${day.high}°` }
+              low={ `${day.low}°- ` }
             />
           )
         })
