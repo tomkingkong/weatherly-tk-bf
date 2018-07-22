@@ -11,18 +11,20 @@ export default class Search extends Component {
   } // end of constructor
 
   render() {
+    const { userLocInput } = this.state
+    
     return (
       <form className="Search" onSubmit={ (e) => {
         e.preventDefault();
-        this.props.updateLocation(this.state.userLocInput)
+        this.props.updateLocation(userLocInput)
         this.setState({
           userLocInput: ''
         })
       }}>
         <input 
           type="text" 
-          value={this.state.userLocInput}
-          placeholder="CITY / ZIP"
+          value={userLocInput}
+          placeholder="CITY, STATE / ZIP"
           onChange={ (e) => {
             this.setState({ 
               userLocInput: e.target.value.toUpperCase()
@@ -30,7 +32,7 @@ export default class Search extends Component {
           }}
         />
         <button>Submit</button>
-        <h3>{this.state.userLocInput} could not be found :( Please enter a different location</h3>
+        <h3>{userLocInput} could not be found :( Please enter a different location</h3>
       </form>
       
     )
