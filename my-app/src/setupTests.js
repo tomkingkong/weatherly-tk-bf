@@ -27,4 +27,3 @@ global.localStorage = new LocalStorage;
 global.document = jsdom.jsdom('');
 global.window = document.defaultView;
 global.navigator = window.navigator;
-
