@@ -22,7 +22,7 @@ class App extends Component {
     }
   }
 
-  updateCurrentData = (Key, state, city) => {
+  updateCurrentData = (state, city) => {
     fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${state}/${city}.json`)
     .then(response => response.json())
     .then(data => {
@@ -40,10 +40,10 @@ class App extends Component {
     let currState = this.state.selectedState;
     let currCity = this.state.selectedCity;
 
-    this.updateCurrentData(Key, currState, currCity);
+    this.updateCurrentData(currState, currCity);
   }
 
-  updateLocation = (Key, city, state) => {
+  updateLocation = (city, state) => {
     let newCity = city;
     let newState = state;
 
@@ -52,11 +52,11 @@ class App extends Component {
       selectedState: newState
     })
 
-    this.updateCurrentData(Key, newState, newCity);
+    this.updateCurrentData(newState, newCity);
   }
 
   render() {
-    const { currWeatherObj, hourlyArray, tenDayArray } = this.state
+    const { currWeatherObj, hourlyArray, tenDayArray } = this.state;
     
     return (
       <div className="App">

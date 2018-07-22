@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import Key from './Key';
 import './Search.css'
 
 export default class Search extends Component {
@@ -16,7 +15,7 @@ export default class Search extends Component {
     return (
       <form className="Search" onSubmit={ (e) => {
         e.preventDefault();
-        this.props.updateLocation(Key, this.state.userCityInput, this.state.userStateInput)
+        this.props.updateLocation(this.state.userCityInput, this.state.userStateInput)
         this.setState({
           userCityInput: '',
           userStateInput: ''

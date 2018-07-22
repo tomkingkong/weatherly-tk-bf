@@ -25,5 +25,5 @@ export const returnWeatherData = (data) => {
       tenDayArray 
     }
 
-    return weatherDataObj
+    return weatherDataObj;
 }
