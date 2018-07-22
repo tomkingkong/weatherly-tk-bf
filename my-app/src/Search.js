@@ -6,8 +6,7 @@ export default class Search extends Component {
   constructor() {
     super();
     this.state = {
-      userCityInput: '',
-      userStateInput: ''
+      userLocInput: ''
     }
   } // end of constructor
 
@@ -15,33 +14,20 @@ export default class Search extends Component {
     return (
       <form className="Search" onSubmit={ (e) => {
         e.preventDefault();
-        this.props.updateLocation(this.state.userCityInput, this.state.userStateInput)
+        this.props.updateLocation(this.state.userLocInput)
         this.setState({
-          userCityInput: '',
-          userStateInput: ''
+          userLocInput: ''
         })
       }}>
         <input 
           type="text" 
-          value={this.state.userCityInput}
+          value={this.state.userLocInput}
           placeholder="CITY / ZIP"
           onChange={ (e) => {
             this.setState({ 
-              userCityInput: e.target.value.toUpperCase()
+              userLocInput: e.target.value.toUpperCase()
             })
           }}
-        />
-        <input 
-        className="state-input"
-        type="text"
-        maxLength="2"
-        value={this.state.userStateInput}
-        placeholder="STATE"
-        onChange={ (e) => {
-          this.setState({
-            userStateInput: e.target.value.toUpperCase()
-          })
-        }}
         />
         <button>Submit</button>
       </form>
