@@ -5,13 +5,12 @@ import './Card.css';
 const Card = (props) => {
   return (
     <article className="Card">
-      <p>{props.month}</p>
-      <p>{props.day}</p>
-      <p>{props.hour}</p>
-      <p>{props.temp}</p>
+      <div>{props.month}</div>
+      <div>{props.day}</div>
+      <div>{props.hour}</div>
       <img src={props.icon} />
-      <p>{props.high}</p>
-      <p>{props.low}</p>
+      <div>{props.temp}</div>
+      <div>{props.low} - {props.high}</div>
     </article>
   )
 }

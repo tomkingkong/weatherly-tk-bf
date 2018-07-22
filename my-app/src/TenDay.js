@@ -13,8 +13,8 @@ const TenDay = (props) => {
             <Card 
               day={ day.date.weekday }
               icon={ day.icon_url }
-              high={ day.high.fahrenheit }
-              low={ day.low.fahrenheit }
+              high={ `${day.high.fahrenheit}•`}
+              low={`${day.low.fahrenheit}•`}
             />
           )
         })
