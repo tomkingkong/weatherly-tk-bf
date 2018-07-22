@@ -8,7 +8,7 @@ export default class Search extends Component {
     this.state = {
       userLocInput: ''
     }
-  } // end of constructor
+  }
 
   returnError = () => {
     const { ifError, loc } = this.props;
@@ -44,7 +44,7 @@ export default class Search extends Component {
       </form>
     )
   }
-} // end of class
+}
 
 
 

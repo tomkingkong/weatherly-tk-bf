@@ -11,8 +11,21 @@ export const returnWeatherData = (data) => {
       'summary': data.forecast.txt_forecast.forecastday[0].fcttext
     };
 
-    let hourlyArray = data.hourly_forecast;
-    let tenDayArray = data.forecast.simpleforecast.forecastday;
+    let hourlyArray = data.hourly_forecast.map(hour => {
+      return hour = {
+        'hour': hour.FCTTIME.civil,
+        'icon': hour.icon_url,
+        'temp': hour.temp.english
+      }
+    })
+    let tenDayArray = data.forecast.simpleforecast.forecastday.map(day => {
+      return day = {
+        'day': day.date.weekday,
+        'icon': day.icon_url,
+        'high': day.high.fahrenheit,
+        'low': day.low.fahrenheit
+      }
+    })
 
     return { currWeatherObj, hourlyArray, tenDayArray };
 }
