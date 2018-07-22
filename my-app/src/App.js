@@ -14,7 +14,7 @@ class App extends Component {
     super();
 
     this.state = {
-      selectedLocation: 'DENVER, CO',
+      selectedLocation: '',
       currWeatherObj: {},
       hourlyArray: [],
       tenDayArray: [],
@@ -72,16 +72,32 @@ class App extends Component {
     this.updateCurrentData(newLoc);
   }
 
-  render() {
+  displayPage = () => {
     const { currWeatherObj, hourlyArray, tenDayArray, searchError, selectedLocation } = this.state;
-    
+    if (!selectedLocation) {
+      return (
+        <React.Fragment>
+          <Header />
+          <Search updateLocation={this.updateLocation} ifError={searchError} loc={selectedLocation} /> 
+        </React.Fragment>
+      )
+    }
     return (
-      <div className="App">
-        <Header />
+      <React.Fragment>
         <Search updateLocation={this.updateLocation} ifError={searchError} loc={selectedLocation} />
         <CurrentWeather currWeatherObj={currWeatherObj} />
         <SevenHour hourlyArray={hourlyArray} />
         <TenDay tenDayArray={tenDayArray} />
+      </React.Fragment>
+    )
+  }
+
+  render() {
+    return (
+      <div className="App">
+       {
+         this.displayPage()
+       }
       </div>
     );
   }
