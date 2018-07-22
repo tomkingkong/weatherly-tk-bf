@@ -28,6 +28,7 @@ class App extends Component {
     .then(data => {
       let weatherDataObj = returnWeatherData(data);
       this.setState({
+        searchError: false,
         currWeatherObj: weatherDataObj.currWeatherObj,
         hourlyArray: weatherDataObj.hourlyArray,
         tenDayArray: weatherDataObj.tenDayArray
@@ -59,12 +60,12 @@ class App extends Component {
   }
 
   render() {
-    const { currWeatherObj, hourlyArray, tenDayArray } = this.state;
+    const { currWeatherObj, hourlyArray, tenDayArray, searchError } = this.state;
     
     return (
       <div className="App">
         <Header />
-        <Search updateLocation={this.updateLocation}/>
+        <Search updateLocation={this.updateLocation} ifError={searchError} />
         <CurrentWeather currWeatherObj={currWeatherObj} />
         <SevenHour hourlyArray={hourlyArray} />
         <TenDay tenDayArray={tenDayArray} />

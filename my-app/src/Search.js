@@ -30,7 +30,9 @@ export default class Search extends Component {
           }}
         />
         <button>Submit</button>
+        <h3>{this.state.userLocInput} could not be found :( Please enter a different location</h3>
       </form>
+      
     )
   }
 } // end of class
