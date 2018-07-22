@@ -22,6 +22,14 @@ class App extends Component {
     }
   }
 
+  getStorageLocation = (storeKey) => {
+    return JSON.parse(localStorage.getItem(storeKey))
+  }
+
+  setStorageLocation = (storeKey, storeItem) => {
+    return localStorage.setItem(storeKey, JSON.stringify(storeItem))
+  }
+
   updateCurrentData = (loc) => {
     fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${loc}/.json`)
     .then(response => response.json())
