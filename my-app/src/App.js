@@ -60,12 +60,12 @@ class App extends Component {
   }
 
   render() {
-    const { currWeatherObj, hourlyArray, tenDayArray, searchError } = this.state;
+    const { currWeatherObj, hourlyArray, tenDayArray, searchError, selectedLocation } = this.state;
     
     return (
       <div className="App">
         <Header />
-        <Search updateLocation={this.updateLocation} ifError={searchError} />
+        <Search updateLocation={this.updateLocation} ifError={searchError} loc={selectedLocation} />
         <CurrentWeather currWeatherObj={currWeatherObj} />
         <SevenHour hourlyArray={hourlyArray} />
         <TenDay tenDayArray={tenDayArray} />

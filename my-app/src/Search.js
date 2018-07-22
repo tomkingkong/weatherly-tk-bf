@@ -3,16 +3,22 @@ import React, { Component } from 'react';
 import './Search.css'
 
 export default class Search extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       userLocInput: ''
     }
   } // end of constructor
 
+  returnError = () => {
+    if (this.props.ifError) return <h3>{this.props.loc} could not be found :( Please enter a different location</h3>
+
+    return
+  }
+
   render() {
     const { userLocInput } = this.state
-    
+
     return (
       <form className="Search" onSubmit={ (e) => {
         e.preventDefault();
@@ -32,7 +38,7 @@ export default class Search extends Component {
           }}
         />
         <button>Submit</button>
-        <h3>{userLocInput} could not be found :( Please enter a different location</h3>
+        { this.returnError() }
       </form>
       
     )
