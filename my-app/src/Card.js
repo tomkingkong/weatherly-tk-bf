@@ -8,7 +8,7 @@ const Card = (props) => {
       <div>{props.month}</div>
       <div>{props.day}</div>
       <div>{props.hour}</div>
-      <img src={props.icon} />
+      <img alt="condition" src={props.icon} />
       <div>{props.temp}</div>
       <div>{props.low}{props.high}</div>
     </article>
