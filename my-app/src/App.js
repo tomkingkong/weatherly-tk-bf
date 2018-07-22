@@ -33,7 +33,7 @@ class App extends Component {
         tenDayArray: weatherDataObj.tenDayArray
       })
     })
-    .catch(error => { throw new Error(error) });
+    .catch(error => { console.log('error') });
   }
 
   componentDidMount() {

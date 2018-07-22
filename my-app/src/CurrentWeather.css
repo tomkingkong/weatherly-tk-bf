@@ -4,6 +4,9 @@
   padding: 1rem;
   display: flex;
   flex-direction: row;
+  width: 57rem;
+  margin: 0 auto;
+  color: #3b3a30;
 }
 
 .CurrentWeather .left-section {
@@ -15,15 +18,22 @@
   display: flex;
   flex-direction: column;
   margin-left: 21rem;
+  justify-content: space-around;
 }
 
 .CurrentWeather span {
   display: flex;
   flex-direction: row;
-  width: 16rem;
+  align-items: center;
+  width: 26rem;
   
 }
 
-.CurrentWeather span img {
+.currentTemp {
+  font-size: 4rem; 
+}
 
+.CurrentWeather img {
+  height: 7rem;
+  width: 7rem;
 }

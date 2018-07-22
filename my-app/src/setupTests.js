@@ -1,9 +1,6 @@
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-<<<<<<< HEAD
-configure({ adapter: new Adapter() });
-=======
 configure({ adapter: new Adapter() });
 
 
@@ -22,4 +19,4 @@ class API {
 }
 
 global.api = new API;
->>>>>>> testing
+
