@@ -18,7 +18,7 @@ class App extends Component {
       currWeatherObj: {},
       hourlyArray: [],
       tenDayArray: [],
-      error: false
+      searchError: false
     }
   }
 
@@ -33,7 +33,13 @@ class App extends Component {
         tenDayArray: weatherDataObj.tenDayArray
       })
     })
-    .catch(error => { throw new Error(error) });
+    .catch(error => { throw new Error(error) })
+    .catch(err => {
+      this.setState({
+        searchError: true
+      })
+      console.log(err)
+    })
   }
 
   componentDidMount() {
