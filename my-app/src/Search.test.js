@@ -25,15 +25,20 @@ describe( 'Search', () => {
     expect(wrapper.find('button').length).toEqual(1);
   })
 
-  // it('Should update state when user enters a location', () => {
-  //   let userInput = wrapper.find('input').first();
-  //   let submitButton = wrapper.find('button').first();
-  //   let event = '80204';
+  it('Should update state when user enters a location', () => {
+    let userInput = wrapper.find('input').first();
+    let submitButton = wrapper.find('button').first();
+    let event = {
+      target: {
+        value: 'foo'
+      }
+    }
 
-  //   userInput.simulate('change', event);
-  //   submitButton.simulate('click');
+    userInput.simulate('change', event);
+    submitButton.simulate('click');
 
-  //   expect(wrapper.state().userLocInput).toEqual(80204);
-  // })
+    expect(wrapper.state().userLocInput).toEqual('FOO');
+  })
+
 
 });
