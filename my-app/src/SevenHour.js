@@ -9,12 +9,13 @@ const SevenHour = (props) => {
   return (
     <div className="SevenHour">
       {
-        hourlyArray.map(hour => {
+        hourlyArray.map((hour, i) => {
           return ( 
             <Card 
-              hour={hour.hour}
-              icon={hour.icon}
-              temp={`${hour.temp}°`}
+              key={ `hour ${i}` }
+              hour={ hour.hour }
+              icon={ hour.icon }
+              temp={ `${hour.temp}°` }
             />
           )
         })

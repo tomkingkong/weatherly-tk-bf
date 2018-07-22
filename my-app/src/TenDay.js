@@ -8,13 +8,14 @@ const TenDay = (props) => {
   return (
     <div className="TenDay">
       {
-        props.tenDayArray.map(day => {
+        props.tenDayArray.map((day, i) => {
           return (
             <Card 
+              key={ `day ${i}` }
               day={ day.day }
               icon={ day.icon }
-              high={ `${day.high}°`}
-              low={`${day.low}°`}
+              high={ `${day.high}°` }
+              low={ `${day.low}°- ` }
             />
           )
         })

@@ -14,7 +14,7 @@ class App extends Component {
     super();
 
     this.state = {
-      selectedLocation: null,
+      selectedLocation: '',
       currWeatherObj: {},
       hourlyArray: [],
       tenDayArray: [],
@@ -51,7 +51,6 @@ class App extends Component {
         this.setState({
           searchError: true,
         })
-        console.log(err)
       })
     }
   }
