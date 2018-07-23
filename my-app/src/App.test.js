@@ -3,13 +3,16 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import App from './App';
+import Data from './MockData'
+import { returnWeatherData } from './Helper.js'
+// console.log(Data.forecast.simpleforecast.forecastday)
 
 describe( 'App', () => {
   let wrapper;
 
   beforeEach(() => {
+    localStorage.clear();
     wrapper = shallow(<App />);
-    // localStorage.clear();
   })
 
   it('should exist', () => {
@@ -49,4 +52,28 @@ describe( 'App', () => {
     expect(wrapper.find('TenDay').length).toEqual(1);
   })
 
+  it.only('should update state', () => {
+    expect(wrapper.state().tenDayArray).toEqual([]);
+    expect(wrapper.state().hourlyArray).toEqual([]);
+    expect(wrapper.state().currWeatherObj).toEqual({});
+
+    let weatherDataObj = returnWeatherData(Data);
+    wrapper.setState({
+      currWeatherObj: weatherDataObj.currWeatherObj,
+      hourlyArray: weatherDataObj.hourlyArray,
+      tenDayArray: weatherDataObj.tenDayArray
+    });
+    expect(wrapper.state().tenDayArray.length).toEqual(10);
+    expect(wrapper.state().hourlyArray.length).toEqual(36);
+    expect(wrapper.state().currWeatherObj).toEqual({
+      "currentCity": "LOUISVILLE",
+      "currentCondition": "Partly Cloudy",
+      "currentDay": "Wednesday",
+      "currentHigh": "51",
+      "currentIcon": "http://icons.wxug.com/i/c/k/mostlycloudy.gif",
+      "currentLow": "32",
+      "currentState": "KY",
+      "currentTemp": 46,
+      "summary": "Sun and clouds mixed. High 51F. Winds NE at 10 to 15 mph.",});
+  })
 });
