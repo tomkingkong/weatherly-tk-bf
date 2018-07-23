@@ -54,7 +54,6 @@ class App extends Component {
       })
     }
   }
-
   // componentDidUpdate(prevProps) {
   //   if (prevProps.selectedLocation !== this.state.selectedLocation) {
   //     this.updateCurrentData(this.state.selectedLocation);

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
 import './Search.css'
+const { data } = require('./cities.js')
+const { Trie } = require('@tomkingkong/location-search');
 
 export default class Search extends Component {
   constructor(props) {
@@ -8,6 +10,8 @@ export default class Search extends Component {
     this.state = {
       userLocInput: ''
     }
+    this.locTrie = new Trie();
+    this.locTrie.populate(data)
   }
 
   returnError = () => {
@@ -34,6 +38,9 @@ export default class Search extends Component {
           value={userLocInput}
           placeholder="CITY, STATE / ZIP"
           onChange={ (e) => {
+          
+            console.log(this.locTrie)
+
             this.setState({ 
               userLocInput: e.target.value.toUpperCase()
             })
