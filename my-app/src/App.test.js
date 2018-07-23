@@ -37,10 +37,10 @@ describe( 'App', () => {
 
   it('should retrieve data from local storage on mount', () => {
 
-  localStorage.setItem('savedLoc', JSON.stringify(80204));
+    localStorage.setItem('savedLoc', JSON.stringify(80204));
 
-  wrapper = mount(<App />);
-  expect(wrapper.state().selectedLocation).toEqual(80204);
+    wrapper = mount(<App />);
+    expect(wrapper.state().selectedLocation).toEqual(80204);
   })
 
   it('should render CurrentWeather, SevenHour and TenDay components after a location has been entered', () => {
