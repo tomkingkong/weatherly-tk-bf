@@ -3,14 +3,25 @@ import React from 'react';
 import './Card.css';
 
 const Card = (props) => {
+  const { 
+    month, 
+    day, 
+    hour, 
+    icon, 
+    temp, 
+    high, 
+    low, 
+    condition 
+  } = props;
+
   return (
     <article className="Card">
-      <div>{props.month}</div>
-      <div>{props.day}</div>
-      <div>{props.hour}</div>
-      <img alt="condition" src={props.icon} />
-      <div>{props.temp}</div>
-      <div>{props.low}{props.high}</div>
+      <div>{month}</div>
+      <div>{day}</div>
+      <div>{hour}</div>
+      <img alt={condition} src={icon} />
+      <div>{temp}</div>
+      <div>{low}{high}</div>
     </article>
   )
 }

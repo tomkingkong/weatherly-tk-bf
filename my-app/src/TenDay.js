@@ -16,6 +16,7 @@ const TenDay = (props) => {
               icon={ day.icon }
               high={ `${day.high}°` }
               low={ `${day.low}°- ` }
+              condition= { day.condition }
             />
           )
         })

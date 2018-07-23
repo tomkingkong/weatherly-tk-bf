@@ -16,6 +16,7 @@ const SevenHour = (props) => {
               hour={ hour.hour }
               icon={ hour.icon }
               temp={ `${hour.temp}°` }
+              condition={ hour.condition }
             />
           )
         })

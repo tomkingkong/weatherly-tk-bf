@@ -25,7 +25,7 @@ const CurrentWeather = (props) => {
       <div className="right-section">
         <span>
           <p>{currentCondition}</p>
-          <img alt="condition" src={currentIcon} />
+          <img alt={currentCondition} src={currentIcon} />
         </span>
         <p>{currentLow}° - {currentHigh}°</p>
         <p>{summary}</p>
