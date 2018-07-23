@@ -55,6 +55,12 @@ class App extends Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.selectedLocation !== this.state.selectedLocation) {
+      this.updateCurrentData(this.state.selectedLocation);
+    }
+  }
+
   componentDidMount() {
     let loc = this.getStorageLocation('savedLoc');
 
@@ -71,8 +77,6 @@ class App extends Component {
     this.setState({
       selectedLocation: newLoc,
     })
-
-    this.updateCurrentData(newLoc);
   }
 
   displayPage = () => {
