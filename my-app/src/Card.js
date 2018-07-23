@@ -4,7 +4,6 @@ import './Card.css';
 
 const Card = (props) => {
   const { 
-    month, 
     day, 
     hour, 
     icon, 
@@ -16,12 +15,11 @@ const Card = (props) => {
 
   return (
     <article className="Card">
-      <div>{month}</div>
-      <div>{day}</div>
-      <div>{hour}</div>
+      {day && <div>{day}</div>}
+      {hour && <div>{hour}</div>}
       <img alt={condition} src={icon} />
-      <div>{temp}</div>
-      <div>{low}{high}</div>
+      {temp && <div>{temp}</div>}
+      {low && <div>{low}{high}</div>}
     </article>
   )
 }
