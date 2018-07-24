@@ -10,7 +10,7 @@ const TenDay = (props) => {
       {
         props.tenDayArray.map((day, i) => {
           let dayByHours = props.hours.filter(hour => { 
-            return parseInt(hour.yday, 0) === day.yday;
+            return hour.yday === day.yday;
           })
 
           return (

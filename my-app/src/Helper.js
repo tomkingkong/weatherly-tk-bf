@@ -12,14 +12,15 @@ export const returnWeatherData = (data) => {
     };
 
     let hourlyArray = data.hourly_forecast.map(hour => {
+      let time = hour.FCTTIME.civil;
       return hour = {
-        'hour': hour.FCTTIME.civil,
+        'hour': time.slice(0, time.indexOf(':')) + time.slice(-2),
         'icon': hour.icon_url,
-        'temp': hour.temp.english,
+        'temp': Math.round(parseInt(hour.temp.english, 0)),
         'condition': hour.condition,
-        'yday': hour.FCTTIME.yday
+        'yday': parseInt(hour.FCTTIME.yday, 0)
       }
-    })
+    });
     
     let tenDayArray = data.forecast.simpleforecast.forecastday.map(day => {
       return day = {
@@ -30,7 +31,7 @@ export const returnWeatherData = (data) => {
         'condition': day.conditions,
         'yday': day.date.yday
       }
-    })
+    });
 
     return { currWeatherObj, hourlyArray, tenDayArray };
 }
