@@ -16,7 +16,8 @@ export const returnWeatherData = (data) => {
         'hour': hour.FCTTIME.civil,
         'icon': hour.icon_url,
         'temp': hour.temp.english,
-        'condition': hour.condition
+        'condition': hour.condition,
+        'yday': hour.FCTTIME.yday
       }
     })
     
@@ -26,7 +27,8 @@ export const returnWeatherData = (data) => {
         'icon': day.icon_url,
         'high': day.high.fahrenheit,
         'low': day.low.fahrenheit,
-        'condition': day.conditions
+        'condition': day.conditions,
+        'yday': day.date.yday
       }
     })
 
