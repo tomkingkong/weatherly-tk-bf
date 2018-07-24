@@ -47,18 +47,24 @@ export default class Search extends Component {
         })
       }}>
         <input 
+          list="locations"
           type="text" 
           value={userLocInput}
           placeholder="CITY, STATE / ZIP"
           onChange={ (e) => {
-          
-            console.log(this.locTrie)
-
+            let value = e.target.value.toUpperCase()
+            let options = this.locTrie.getSuggestions(value).slice(0, 5)
             this.setState({ 
-              userLocInput: e.target.value.toUpperCase()
+              userLocInput: value,
+              suggestions: options
             })
           }}
         />
+        <datalist id="locations">
+          {
+            this.displaySuggestions()
+          }
+        </datalist>
         <button>Submit</button>
         { this.returnError() }
       </form>
