@@ -4,9 +4,9 @@ import './App.css';
 import Key from './Key';
 import Header from './Header';
 import Search from './Search';
-import CurrentWeather from './CurrentWeather';
-import SevenHour from './SevenHour';
 import TenDay from './TenDay';
+import SevenHour from './SevenHour';
+import CurrentWeather from './CurrentWeather';
 import { returnWeatherData } from './Helper';
 
 class App extends Component {
@@ -22,52 +22,41 @@ class App extends Component {
     }
   }
 
-  getStorageLocation = (storeKey) => {
+  getLocationFromStore = (storeKey) => {
     if (localStorage.getItem(storeKey)) {
       return JSON.parse(localStorage.getItem(storeKey));
     }
   }
 
-  setStorageLocation = (storeKey, storeItem) => {
+  storeLocation = (storeKey, storeItem) => {
     return localStorage.setItem(storeKey, JSON.stringify(storeItem));
   }
 
   updateCurrentData = (loc) => {
-    if (loc) {
-      fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly10day/forecast10day/q/${loc}/.json`)
-      .then(response => response.json())
-      .then(data => {
-        let weatherDataObj = returnWeatherData(data);
-        this.setStorageLocation('savedLoc', data.current_observation.display_location.zip);
-        this.setState({
-          searchError: false,
-          currWeatherObj: weatherDataObj.currWeatherObj,
-          hourlyArray: weatherDataObj.hourlyArray,
-          tenDayArray: weatherDataObj.tenDayArray
-        })
+    fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly10day/forecast10day/q/${loc}/.json`)
+    .then(response => response.json())
+    .then(data => {
+      let weatherDataObj = returnWeatherData(data);
+      this.storeLocation('savedLoc', data.current_observation.display_location.zip);
+
+      this.setState({
+        searchError: false,
+        currWeatherObj: weatherDataObj.currWeatherObj,
+        hourlyArray: weatherDataObj.hourlyArray,
+        tenDayArray: weatherDataObj.tenDayArray
       })
-      .catch(error => { throw new Error(error) })
-      .catch(err => {
-        this.setState({
-          searchError: true,
-        })
+    })
+    .catch(error => { throw new Error(error) })
+    .catch(err => {
+      this.setState({
+        searchError: true,
       })
-    }
+    })
   }
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.selectedLocation !== this.state.selectedLocation) {
-  //     this.updateCurrentData(this.state.selectedLocation);
-  //   }
-  // }
 
   componentDidMount() {
-    let loc = this.getStorageLocation('savedLoc');
-
-    this.setState({
-      selectedLocation: loc
-    })
-
-    this.updateCurrentData(loc);
+    let loc = this.getLocationFromStore('savedLoc');
+    this.updateLocation(loc);
   }
 
   updateLocation = (loc) => {
@@ -76,7 +65,7 @@ class App extends Component {
     this.setState({
       selectedLocation: newLoc,
     })
-
+ 
     this.updateCurrentData(newLoc)
   }
 
