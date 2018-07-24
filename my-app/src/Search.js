@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 
 import './Search.css'
-const { data } = require('./cities.js')
+const { capData } = require('./cities.js')
 const { Trie } = require('@tomkingkong/location-search');
 
 export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userLocInput: ''
+      userLocInput: '',
+      suggestions: []
     }
+
     this.locTrie = new Trie();
-    this.locTrie.populate(data)
+    this.locTrie.populate(capData)
   }
 
   returnError = () => {
