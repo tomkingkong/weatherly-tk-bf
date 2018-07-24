@@ -11,13 +11,12 @@ describe( 'App', () => {
 
   beforeEach(() => {
     localStorage.clear();
+    fetch.resetMocks();
     wrapper = shallow(<App />);
-    wrapper.instance().updateCurrentData = jest.fn()
   })
 
   it('should exist', () => {
     expect(wrapper).toBeDefined();
-
   });
 
   it('should have a default selectedLocation of an empty string', () => {
@@ -40,7 +39,6 @@ describe( 'App', () => {
   })
 
   it('should retrieve data from local storage on mount', () => {
-
     localStorage.setItem('savedLoc', JSON.stringify(80204));
 
     // wrapper = mount(<App />);

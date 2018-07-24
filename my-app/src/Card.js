@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import './Card.css';
-import './SevenHour.css';
 
 export default class Card extends Component {
   constructor(props) {

@@ -13,7 +13,7 @@ export default class Search extends Component {
     }
 
     this.locTrie = new Trie();
-    this.locTrie.populate(capData)
+    this.locTrie.populate(capData);
   }
 
   returnError = () => {
