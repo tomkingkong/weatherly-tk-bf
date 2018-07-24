@@ -4,7 +4,7 @@ import Card from './Card.js';
 import './SevenHour.css';
 
 const SevenHour = (props) => {
-  let hourlyArray = props.hourlyArray.slice(0, -29);
+  let hourlyArray = props.hourlyArray.slice(0, -233);
 
   return (
     <div className="SevenHour">
@@ -16,6 +16,7 @@ const SevenHour = (props) => {
               hour={ hour.hour }
               icon={ hour.icon }
               temp={ `${hour.temp}°` }
+              condition={ hour.condition }
             />
           )
         })

@@ -34,7 +34,7 @@ class App extends Component {
 
   updateCurrentData = (loc) => {
     if (loc) {
-      fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly/forecast10day/q/${loc}/.json`)
+      fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly10day/forecast10day/q/${loc}/.json`)
       .then(response => response.json())
       .then(data => {
         let weatherDataObj = returnWeatherData(data);
@@ -54,6 +54,11 @@ class App extends Component {
       })
     }
   }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.selectedLocation !== this.state.selectedLocation) {
+  //     this.updateCurrentData(this.state.selectedLocation);
+  //   }
+  // }
 
   componentDidMount() {
     let loc = this.getStorageLocation('savedLoc');
@@ -72,17 +77,24 @@ class App extends Component {
       selectedLocation: newLoc,
     })
 
-    this.updateCurrentData(newLoc);
+    this.updateCurrentData(newLoc)
   }
 
   displayPage = () => {
-    const { currWeatherObj, hourlyArray, tenDayArray, searchError, selectedLocation } = this.state;
+    const { 
+      currWeatherObj, 
+      hourlyArray, 
+      tenDayArray, 
+      searchError, 
+      selectedLocation 
+    } = this.state;
+    
     if (selectedLocation && !searchError) {
       return (
         <React.Fragment>
-          <CurrentWeather currWeatherObj={currWeatherObj} />
-          <SevenHour hourlyArray={hourlyArray} />
-          <TenDay tenDayArray={tenDayArray} />
+          <CurrentWeather currWeatherObj={ currWeatherObj } />
+          <SevenHour hourlyArray={ hourlyArray } />
+          <TenDay tenDayArray={ tenDayArray } hours={ hourlyArray } />
         </React.Fragment>
       )
     }
@@ -94,7 +106,11 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Search updateLocation={this.updateLocation} ifError={searchError} loc={selectedLocation} /> 
+        <Search 
+          updateLocation={ this.updateLocation } 
+          ifError={ searchError } 
+          loc={ selectedLocation } 
+        /> 
         {
           this.displayPage()
         }

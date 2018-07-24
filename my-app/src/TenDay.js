@@ -9,6 +9,10 @@ const TenDay = (props) => {
     <div className="TenDay">
       {
         props.tenDayArray.map((day, i) => {
+          let dayByHours = props.hours.filter(hour => { 
+            return parseInt(hour.yday, 0) === day.yday;
+          })
+
           return (
             <Card 
               key={ `day ${i}` }
@@ -16,6 +20,9 @@ const TenDay = (props) => {
               icon={ day.icon }
               high={ `${day.high}°` }
               low={ `${day.low}°- ` }
+              condition={ day.condition }
+              hours={ dayByHours }
+              matchDay={ day.yday }
             />
           )
         })
