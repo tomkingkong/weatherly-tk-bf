@@ -2,17 +2,17 @@
   display: flex;
   flex-direction: column;
   float: left;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
   width: 96vw;
 }
 
 .TenDay .Card {
   height: 4rem;
   float: left;
-  width: 67%;
+  width: 97%;
   display: flex;
   flex-direction: row;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .TenDay .Card p {

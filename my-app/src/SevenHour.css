@@ -1,9 +1,21 @@
 .SevenHour {
   display: flex;
   flex-flow: row wrap;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: .7rem;
 }
 
 .SevenHour .Card {
   text-align: center;
+  height: 2.8rem;
+  width: 2.4rem;
+  border: none;
+  border-right: 1px solid cadetblue;
+}
+
+.SevenHour img {
+  height: 1.2rem;
+  width: 1.2rem;
 }
 
