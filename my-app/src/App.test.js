@@ -3,17 +3,21 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import App from './App';
+import Data from './MockData'
+import { returnWeatherData } from './Helper.js'
 
 describe( 'App', () => {
   let wrapper;
 
   beforeEach(() => {
+    localStorage.clear();
     wrapper = shallow(<App />);
-    // localStorage.clear();
+    wrapper.instance().updateCurrentData = jest.fn()
   })
 
   it('should exist', () => {
     expect(wrapper).toBeDefined();
+
   });
 
   it('should have a default selectedLocation of an empty string', () => {
@@ -24,7 +28,7 @@ describe( 'App', () => {
     expect(wrapper.state().searchError).toEqual(false);
   })
 
-  it('should have a default tenDayArray and hourlyArray of an empty array and empty currWeatherObj', () => {
+  it.skip('should have a default tenDayArray and hourlyArray of an empty array and empty currWeatherObj', () => {
     expect(wrapper.state().currWeatherObj).toEqual({});
     expect(wrapper.state().hourlyArray).toEqual([]);
     expect(wrapper.state().tenDayArray).toEqual([]);
@@ -49,4 +53,30 @@ describe( 'App', () => {
     expect(wrapper.find('TenDay').length).toEqual(1);
   })
 
+  it.skip('should update state', () => {
+    expect(wrapper.state().tenDayArray).toEqual([]);
+    expect(wrapper.state().hourlyArray).toEqual([]);
+    expect(wrapper.state().currWeatherObj).toEqual({});
+
+    let weatherDataObj = returnWeatherData(Data);
+    let expectedObj = {
+      "currentCity": "LOUISVILLE",
+      "currentCondition": "Partly Cloudy",
+      "currentDay": "Wednesday",
+      "currentHigh": "51",
+      "currentIcon": "http://icons.wxug.com/i/c/k/mostlycloudy.gif",
+      "currentLow": "32",
+      "currentState": "KY",
+      "currentTemp": 46,
+      "summary": "Sun and clouds mixed. High 51F. Winds NE at 10 to 15 mph."}
+
+    wrapper.setState({
+      currWeatherObj: weatherDataObj.currWeatherObj,
+      hourlyArray: weatherDataObj.hourlyArray,
+      tenDayArray: weatherDataObj.tenDayArray
+    });
+    expect(wrapper.state().tenDayArray.length).toEqual(10);
+    expect(wrapper.state().hourlyArray.length).toEqual(36);
+    expect(wrapper.state().currWeatherObj).toEqual(expectedObj);
+  })
 });
