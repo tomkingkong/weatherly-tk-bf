@@ -1,4 +1,4 @@
-export const data = [
+const data = [
     "New York, NY",
     "Los Angeles, CA",
     "Chicago, IL",
@@ -1000,3 +1000,8 @@ export const data = [
     "Beloit, WI",
     "Panama City, FL"
   ]
+  let capData = data.map(city => city.toUpperCase())
+
+  export {
+    capData
+  }

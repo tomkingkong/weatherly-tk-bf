@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 
 import './Search.css'
-const { data } = require('./cities.js')
+const { capData } = require('./cities.js')
 const { Trie } = require('@tomkingkong/location-search');
 
 export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userLocInput: ''
+      userLocInput: '',
+      suggestions: []
     }
+
     this.locTrie = new Trie();
-    this.locTrie.populate(data)
+    this.locTrie.populate(capData)
   }
 
   returnError = () => {
@@ -20,6 +22,17 @@ export default class Search extends Component {
     if (ifError) return <h3>{loc} could not be found :( Please enter a different location</h3>
 
     return;
+  }
+
+  updateSuggestions = (input) => {
+    let suggests = this.locTrie.getSuggestions(input)
+    this.setState({
+      suggestions: suggests
+    })
+  }
+
+  displaySuggestions = () => {
+    return this.state.suggestions.map(suggestion => <option key={suggestion} value={suggestion} />)
   }
 
   render() {
@@ -34,18 +47,24 @@ export default class Search extends Component {
         })
       }}>
         <input 
+          list="locations"
           type="text" 
           value={userLocInput}
           placeholder="CITY, STATE / ZIP"
           onChange={ (e) => {
-          
-            console.log(this.locTrie)
-
+            let value = e.target.value.toUpperCase()
+            let options = this.locTrie.getSuggestions(value).slice(0, 5)
             this.setState({ 
-              userLocInput: e.target.value.toUpperCase()
+              userLocInput: value,
+              suggestions: options
             })
           }}
         />
+        <datalist id="locations">
+          {
+            this.displaySuggestions()
+          }
+        </datalist>
         <button>Submit</button>
         { this.returnError() }
       </form>
