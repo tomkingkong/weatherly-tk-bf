@@ -6,7 +6,7 @@ import './TenDay.css';
 const TenDay = (props) => {
   
   return (
-    <div className="TenDay">
+    <section className="TenDay">
       {
         props.tenDayArray.map((day, i) => {
           let dayByHours = props.hours.filter(hour => { 
@@ -18,8 +18,8 @@ const TenDay = (props) => {
               key={ `day ${i}` }
               day={ day.day }
               icon={ day.icon }
-              high={ `${day.high}°` }
-              low={ `${day.low}°- ` }
+              high={ `${day.high}° /` }
+              low={ ` ${day.low}°` }
               condition={ day.condition }
               hours={ dayByHours }
               matchDay={ day.yday }
@@ -27,7 +27,7 @@ const TenDay = (props) => {
           )
         })
       }
-    </div>
+    </section>
   )
 }
 

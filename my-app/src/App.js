@@ -94,7 +94,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header />
+        {searchError && <Header />}
         <Search 
           updateLocation={ this.updateLocation } 
           ifError={ searchError } 

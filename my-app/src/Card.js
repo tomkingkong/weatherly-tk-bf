@@ -18,17 +18,11 @@ export default class Card extends Component {
 
   displayHours = () => {
     const { hours, day } = this.props
-
-    const hourStyles = {
-      border: '1px solid cadetblue',
-      textAlign: 'center',
-      width: '20%'
-    }
     
     return (
       hours.map((hour, i) => { 
         return (
-          <li style={ hourStyles } key={ `${day}hour${i}` }>
+          <li className="Hour" key={ `${day}hour${i}` }>
             <p>{ hour.hour}</p>
             <img alt={ hour.condition } src={ hour.icon } />
             <p>{ `${hour.temp}°` }</p>
@@ -49,26 +43,16 @@ export default class Card extends Component {
       condition 
     } = this.props;
 
-    const twentyFour = {
-      display: 'flex',
-      overflow: 'scroll',
-      listStyleType: 'none',
-      alignItems: 'center',
-      padding: '0',
-      margin: '0 auto',
-      width: '67%'
-    };
-    
     return (
       <React.Fragment>
         <article className="Card" onClick={ day && this.toggleHours } >
-          { day && <div>{ day }</div> }
-          { hour && <div>{ hour }</div> }
+          { day && <h4>{ day }</h4> }
+          { hour && <p>{ hour }</p> }
           <img alt={ condition } src={ icon } />
-          { temp && <div>{ temp }</div>}
-          { low && <div>{ low }{ high }</div> }
+          { temp && <p>{ temp }</p>}
+          { low && <p>{ high }{ low }</p> }
         </article>
-        { this.state.hours && <ul style={ twentyFour }>{ this.displayHours() }</ul> }
+          { this.state.hours && <ul className="DayHours" >{ this.displayHours() }</ul> }
       </React.Fragment>
     )
   }

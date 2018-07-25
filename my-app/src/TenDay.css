@@ -1,22 +1,23 @@
 .TenDay {
-  display: flex;
-  flex-direction: column;
-  float: left;
-  margin-left: 1rem;
-  width: 96vw;
+  margin: 0 auto;
+  min-width: 20rem;
+  max-width: 35rem;
 }
 
 .TenDay .Card {
-  height: 4rem;
-  float: left;
-  width: 67%;
   display: flex;
-  flex-direction: row;
-  font-size: 2rem;
+  flex-flow: row wrap;
+  font-size: 1rem;
+  justify-content: space-around;
+  padding: 1rem 0;
+  height: 4rem;
+  min-width: 20rem;
+  width: 100%;
+  max-width: 35rem;
 }
 
-.TenDay .Card p {
-  margin: 1rem;
+.TenDay .Card h4 {
+  margin: 0;
 }
 
 .TenDay .Card img {

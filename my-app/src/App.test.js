@@ -23,11 +23,11 @@ describe( 'App', () => {
     expect(wrapper.state().selectedLocation).toEqual('');
   })
 
-  it.skip('should have a default searchError state of false', () => {
+  it('should have a default searchError state of false', () => {
     expect(wrapper.state().searchError).toEqual(false);
   })
 
-  it.skip('should have a default tenDayArray and hourlyArray of an empty array and empty currWeatherObj', () => {
+  it('should have a default tenDayArray and hourlyArray of an empty array and empty currWeatherObj', () => {
     expect(wrapper.state().currWeatherObj).toEqual({});
     expect(wrapper.state().hourlyArray).toEqual([]);
     expect(wrapper.state().tenDayArray).toEqual([]);
@@ -41,7 +41,7 @@ describe( 'App', () => {
   it('should retrieve data from local storage on mount', () => {
     localStorage.setItem('savedLoc', JSON.stringify(80204));
 
-    wrapper = mount(<App />);
+    // wrapper = mount(<App />);
     expect(wrapper.state().selectedLocation).toEqual(80204);
   })
 
@@ -51,7 +51,7 @@ describe( 'App', () => {
     expect(wrapper.find('TenDay').length).toEqual(1);
   })
 
-  it.skip('should update state', () => {
+  it('should update state', () => {
     expect(wrapper.state().tenDayArray).toEqual([]);
     expect(wrapper.state().hourlyArray).toEqual([]);
     expect(wrapper.state().currWeatherObj).toEqual({});

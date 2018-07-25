@@ -16,21 +16,27 @@ const CurrentWeather = (props) => {
   } = props.currWeatherObj;
 
   return (
-    <section className="CurrentWeather">
-      <div className="left-section">
-        <h3>{currentCity}, {currentState}</h3>
-        <h4>{currentDay}</h4>
-        <p className="currentTemp">{currentTemp}°</p>
-      </div>
-      <div className="right-section">
-        <span>
+    <React.Fragment>
+      { currentIcon &&
+      <section className="CurrentWeather">
+      <h3>{currentCity}, {currentState}</h3>
+        <div className="currentData">
+        <div className="left-section">
           <p>{currentCondition}</p>
+          <h4>{currentDay}</h4>
+        </div>
+        <div className="mid-section">
           <img alt={currentCondition} src={currentIcon} />
-        </span>
-        <p>{currentLow}° - {currentHigh}°</p>
-        <p>{summary}</p>
-      </div>
-    </section>
+        </div>
+        <div className="right-section">
+          <p className="currentTemp">{currentTemp}°</p>
+          <p>{currentHigh}° / {currentLow}°</p>
+        </div>
+        </div>
+      <p className="summary">{summary}</p>
+      </section>
+      }
+    </React.Fragment>
   )
 }
 

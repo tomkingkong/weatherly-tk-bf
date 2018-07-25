@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './Search.css'
+
 const { capData } = require('./cities.js')
 const { Trie } = require('@tomkingkong/location-search');
 
@@ -46,26 +47,28 @@ export default class Search extends Component {
           userLocInput: ''
         })
       }}>
-        <input 
-          list="locations"
-          type="text" 
-          value={userLocInput}
-          placeholder="CITY, STATE / ZIP"
-          onChange={ (e) => {
-            let value = e.target.value.toUpperCase()
-            let options = this.locTrie.getSuggestions(value).slice(0, 5)
-            this.setState({ 
-              userLocInput: value,
-              suggestions: options
-            })
-          }}
-        />
+          <input 
+            id="locate"
+            list="locations"
+            placeholder="CITY, STATE / ZIP"
+            type="text" 
+            autoComplete="off"
+            value={userLocInput}
+            onChange={ (e) => {
+              let value = e.target.value.toUpperCase()
+              let options = this.locTrie.getSuggestions(value).slice(0, 5)
+              this.setState({ 
+                userLocInput: value,
+                suggestions: options
+              })
+            }}
+          />
+          <input type="submit" className="submit-input" value=" "/>
         <datalist id="locations">
           {
             this.displaySuggestions()
           }
         </datalist>
-        <button>Submit</button>
         { this.returnError() }
       </form>
     )

@@ -21,4 +21,6 @@ class LocalStorage {
   }
 }
 global.localStorage = new LocalStorage;
+
 global.fetch = require('jest-fetch-mock')
+

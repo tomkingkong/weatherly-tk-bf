@@ -4,7 +4,7 @@ export const returnWeatherData = (data) => {
       'currentState': data.current_observation.display_location.state,
       'currentCondition': data.forecast.simpleforecast.forecastday[0].conditions,
       'currentDay': data.forecast.simpleforecast.forecastday[0].date.weekday,
-      'currentTemp': data.current_observation.temp_f,
+      'currentTemp': Math.round(parseInt(data.current_observation.temp_f, 0)),
       'currentHigh': data.forecast.simpleforecast.forecastday[0].high.fahrenheit,
       'currentLow': data.forecast.simpleforecast.forecastday[0].low.fahrenheit,
       'currentIcon': data.current_observation.icon_url,
