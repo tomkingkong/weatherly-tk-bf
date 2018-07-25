@@ -1,7 +1,4 @@
 .CurrentWeather {
-  height: auto;
-  display: flex;
-  flex-direction: column;
   width: 100%;
   margin: 0 auto;
   color: #3b3a30;
