@@ -18,8 +18,8 @@ const TenDay = (props) => {
               key={ `day ${i}` }
               day={ day.day }
               icon={ day.icon }
-              high={ `${day.high}°` }
-              low={ `${day.low}°- ` }
+              high={ `${day.high}° /` }
+              low={ ` ${day.low}°` }
               condition={ day.condition }
               hours={ dayByHours }
               matchDay={ day.yday }
@@ -27,7 +27,7 @@ const TenDay = (props) => {
           )
         })
       }
-    </div>
+    </section>
   )
 }
 
