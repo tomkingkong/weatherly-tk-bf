@@ -58,6 +58,8 @@ export default class Card extends Component {
       margin: '0 auto',
       width: '90%'
     };
+
+    
     
     return (
       <React.Fragment>
