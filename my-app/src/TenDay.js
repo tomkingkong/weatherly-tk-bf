@@ -6,7 +6,7 @@ import './TenDay.css';
 const TenDay = (props) => {
   
   return (
-    <div className="TenDay">
+    <section className="TenDay">
       {
         props.tenDayArray.map((day, i) => {
           let dayByHours = props.hours.filter(hour => { 
