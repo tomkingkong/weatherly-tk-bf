@@ -1,21 +1,18 @@
 import React from 'react';
 
 import { shallow, mount } from 'enzyme';
-import Search from './Search';
 import App from './App';
 import Data from './MockData'
 import { returnWeatherData } from './Helper.js'
 
 describe( 'App', () => {
   let wrapper;
-  let search;
   beforeEach(() => {
-    localStorage.clear();
-    // fetch.resetMocks();
-    wrapper = shallow(<App />);
-    search = shallow(<Search />);
+  localStorage.clear();
+  // fetch.resetMocks();
+  wrapper = shallow(<App />);
   })
-
+      
   it('should exist', () => {
     expect(wrapper).toBeDefined();
   });
@@ -37,18 +34,21 @@ describe( 'App', () => {
     expect(wrapper.state().tenDayArray).toEqual([]);
   })
 
-  it('should render Header and Search components', () => {
+  it('should render a Search component', () => {
     expect(wrapper.find('Search').length).toEqual(1);
   })
 
   it('should retrieve data from local storage on mount', () => {
     let zip = 80204
 
-    localStorage.setItem('savedLoc', JSON.stringify(zip));
+    localStorage.setItem('savedLoc', zip);
+    let localItem = localStorage.getItem('savedLoc');
+  console.log(localItem)
+    // wrapper = mount(<App />)
       wrapper.setState({
-      selectedLocation: localStorage.store.savedLoc
+      selectedLocation: localItem
     })
-    expect(wrapper.state().selectedLocation).toEqual('80204');
+    expect(wrapper.state().selectedLocation).toEqual(80204);
   })
 
   it('should render CurrentWeather, SevenHour and TenDay components after a location has been entered', () => {
