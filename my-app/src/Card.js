@@ -56,8 +56,10 @@ export default class Card extends Component {
       alignItems: 'center',
       padding: '0',
       margin: '0 auto',
-      width: '67%'
+      width: '90%'
     };
+
+    
     
     return (
       <React.Fragment>

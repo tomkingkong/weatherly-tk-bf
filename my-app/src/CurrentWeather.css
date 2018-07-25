@@ -1,39 +1,68 @@
 .CurrentWeather {
   height: auto;
-  background: lightblue;
-  padding: 1rem;
   display: flex;
-  flex-direction: row;
-  width: 57rem;
+  flex-direction: column;
+  width: 100%;
   margin: 0 auto;
   color: #3b3a30;
+  font-size: 1rem;
+  border-top: 3px solid cadetblue;
+  text-align: center;
+}
+
+.currentData {
+  display: flex;
+  align-items: center;
 }
 
 .CurrentWeather .left-section {
   display: flex;
   flex-direction: column;
+  width: 33.33%;
+  text-align: right;
 }
 
 .CurrentWeather .right-section {
   display: flex;
   flex-direction: column;
-  margin-left: 21rem;
-  justify-content: space-around;
+  width: 33.33%;
+  text-align: left;
 }
 
-.CurrentWeather span {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 26rem;
-  
+.right-section p {
+  margin: 0;
 }
+
+.CurrentWeather .mid-section {
+  width: 33.33%;
+  text-align: center;
+}
+
 
 .currentTemp {
-  font-size: 4rem; 
+  font-size: 2rem;
+  margin: 0; 
 }
 
 .CurrentWeather img {
-  height: 7rem;
-  width: 7rem;
+  height: 6rem;
+  width: 6rem;
+  margin: 0 auto;
+}
+
+.CurrentWeather .left-section p {
+  margin: 0;
+}
+
+h3 {
+  width: 100%;
+}
+
+h4 {
+  margin: 0;
+}
+
+.summary {
+  width: 14rem;
+  margin: 0 auto;
 }
