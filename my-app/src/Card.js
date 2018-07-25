@@ -18,17 +18,11 @@ export default class Card extends Component {
 
   displayHours = () => {
     const { hours, day } = this.props
-
-    const hourStyles = {
-      border: '1px solid cadetblue',
-      textAlign: 'center',
-      width: '20%'
-    }
     
     return (
       hours.map((hour, i) => { 
         return (
-          <li style={ hourStyles } key={ `${day}hour${i}` }>
+          <li className="Hour" key={ `${day}hour${i}` }>
             <p>{ hour.hour}</p>
             <img alt={ hour.condition } src={ hour.icon } />
             <p>{ `${hour.temp}°` }</p>
