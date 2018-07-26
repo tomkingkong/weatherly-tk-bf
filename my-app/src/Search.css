@@ -35,3 +35,7 @@
   background: url('./images/magnifier-white.png') no-repeat 50%/60%;
   background-color: cadetblue;
 }
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
