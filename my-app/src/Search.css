@@ -1,5 +1,4 @@
 .Search {
-  background-color: rgba(255, 255, 255, 0.8);
   margin: 1rem auto;
   position: -webkit-sticky;
   position: sticky;
@@ -34,4 +33,8 @@
 .submit-input:hover {
   background: url('./images/magnifier-white.png') no-repeat 50%/60%;
   background-color: cadetblue;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
 }

@@ -64,7 +64,7 @@ export default class Search extends Component {
             }}
           />
           <input type="submit" className="submit-input" value=" "/>
-        <datalist id="locations">
+        <datalist id="locations" >
           {
             this.displaySuggestions()
           }

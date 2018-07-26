@@ -21,8 +21,7 @@ describe( 'Search', () => {
   it('should render a form with and input and a button', () => {
 
     expect(wrapper.find('form').length).toEqual(1);
-    expect(wrapper.find('input').length).toEqual(1);
-    expect(wrapper.find('button').length).toEqual(1);
+    expect(wrapper.find('input').length).toEqual(2);
   })
 
   it('Should update state when user enters a location', () => {
@@ -35,8 +34,6 @@ describe( 'Search', () => {
     }
 
     userInput.simulate('change', event);
-    submitButton.simulate('click');
-
     expect(wrapper.state().userLocInput).toEqual('FOO');
   })
 

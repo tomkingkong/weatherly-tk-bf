@@ -38,7 +38,6 @@ class App extends Component {
     .then(data => {
       let weatherDataObj = returnWeatherData(data);
       this.storeLocation('savedLoc', data.current_observation.display_location.zip);
-
       this.setState({
         searchError: false,
         currWeatherObj: weatherDataObj.currWeatherObj,
