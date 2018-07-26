@@ -77,11 +77,10 @@ class App extends Component {
       currWeatherObj, 
       hourlyArray, 
       tenDayArray, 
-      searchError, 
       selectedLocation 
     } = this.state;
     
-    if (selectedLocation && !searchError) {
+    if (hourlyArray.length) {
       return (
         <React.Fragment>
           <CurrentWeather currWeatherObj={ currWeatherObj } />
@@ -97,7 +96,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        {searchError && <Header />}
+        {!this.state.hourlyArray.length && <Header />}
         <Search 
           updateLocation={ this.updateLocation } 
           ifError={ searchError } 
