@@ -19,7 +19,6 @@ describe( 'Search', () => {
   });
 
   it('should render a form with and input and a button', () => {
-
     expect(wrapper.find('form').length).toEqual(1);
     expect(wrapper.find('input').length).toEqual(2);
   })
@@ -38,5 +37,6 @@ describe( 'Search', () => {
   })
 
   it('should run displaySuggestions when text is entered in the input field')
-
+    wrapper = mount(<Search />)
+    console.log(wrapper.instance().locTrie.wordCount)
 });

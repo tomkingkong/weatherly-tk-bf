@@ -23,13 +23,6 @@ export default class Search extends Component {
     if (ifError && loc !== undefined) return <h3>{loc} could not be found :( </h3>
   }
 
-  updateSuggestions = (input) => {
-    let suggests = this.locTrie.getSuggestions(input)
-    this.setState({
-      suggestions: suggests
-    })
-  }
-
   displaySuggestions = () => {
     return this.state.suggestions.map(suggestion => <option key={suggestion} value={suggestion} />)
   }
