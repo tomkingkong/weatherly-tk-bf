@@ -9,7 +9,6 @@ describe( 'App', () => {
   let wrapper;
   beforeEach(() => {
   localStorage.clear();
-  // fetch.resetMocks();
   wrapper = shallow(<App />);
   })
       
@@ -42,12 +41,11 @@ describe( 'App', () => {
     let zip = 80204
 
     localStorage.setItem('savedLoc', zip);
+    
     let localItem = localStorage.getItem('savedLoc');
-  console.log(localItem)
-    // wrapper = mount(<App />)
-      wrapper.setState({
-      selectedLocation: localItem
-    })
+
+    wrapper.setState({selectedLocation: localItem})
+
     expect(wrapper.state().selectedLocation).toEqual(80204);
   })
 
@@ -70,7 +68,7 @@ describe( 'App', () => {
       "currentCondition": "Partly Cloudy",
       "currentDay": "Wednesday",
       "currentHigh": "51",
-      "currentIcon": "http://icons.wxug.com/i/c/k/mostlycloudy.gif",
+      "currentIcon": "mostlycloudy.svg",
       "currentLow": "32",
       "currentState": "KY",
       "currentTemp": 46,
