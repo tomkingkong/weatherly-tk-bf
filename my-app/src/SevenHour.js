@@ -7,7 +7,7 @@ const SevenHour = (props) => {
   let hourlyArray = props.hourlyArray.slice(0, 7);
 
   return (
-    <div className="SevenHour">
+    <section className="SevenHour">
       {
         hourlyArray.map((hour, i) => {
           return ( 
@@ -21,7 +21,7 @@ const SevenHour = (props) => {
           )
         })
       }
-    </div>
+    </section>
   )
 }
 
