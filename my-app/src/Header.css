@@ -1,15 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Eczar:700|Roboto:300,400,700');
+
 .Header {
+  color: #fff;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 1rem;
-  position: relative;
-  margin: auto;
+  font-family: 'Eczar', serif;
+  text-align: center;
+  margin: 20% 0 0 0;
 }
 
 h1 {
-  font-family: sans-serif;
-  font-size: 3rem;
-  font-weight: bolder;
+  font-size: 3.5rem;
+  font-weight: 700;
+  padding: 0;
   margin: 0;
 }
