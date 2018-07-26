@@ -22,7 +22,11 @@
   height: 1.5em;
   min-width: 19rem;
   width: 100%;
-  max-width: 35rem;
+  max-width: 34.9rem;
+}
+
+.TenDay .Card:hover {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .TenDay .Card h4 {
