@@ -50,7 +50,7 @@ describe( 'App', () => {
   })
 
   it('should render CurrentWeather, SevenHour and TenDay components after a location has been entered', () => {
-    wrapper.setState( {selectedLocation: 'denver, co', hourlyArray: ['string'] })
+    wrapper.setState( { selectedLocation: 'denver, co', hourlyArray: ['string'] })
 
     expect(wrapper.find('CurrentWeather').length).toEqual(1);
     expect(wrapper.find('SevenHour').length).toEqual(1);
