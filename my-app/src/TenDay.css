@@ -17,10 +17,10 @@
   cursor: pointer;
   flex-flow: row wrap;
   font-size: 1rem;
-  justify-content: space-around;
-  padding: 1rem 0;
+  justify-content: space-between;
+  padding: 0.5rem 0;
   height: 1.5em;
-  min-width: 20rem;
+  min-width: 19rem;
   width: 100%;
   max-width: 35rem;
 }
