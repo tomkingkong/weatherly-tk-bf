@@ -38,6 +38,8 @@
 }
 
 .TenDay .Card img {
+  margin: 0 46%;
+  position: absolute;
   width: 2rem;
   height: 2rem;
 }
