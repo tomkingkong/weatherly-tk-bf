@@ -48,6 +48,9 @@ class App extends Component {
     })
     .catch(error => { throw new Error(error) })
     .catch(err => {
+      setTimeout(() => {
+        this.updateCurrentData(this.getLocationFromStore('savedLoc'));
+      }, 3000);
       this.setState({
         searchError: true,
       })
