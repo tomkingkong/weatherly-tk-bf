@@ -6,11 +6,15 @@
   position: relative;
   overflow: scroll;
   min-width: 20rem;
+  width: 100%;
   max-width: 35rem;
 }
 
 .TenDay .Card {
   display: flex;
+  border-right: 0.06rem solid #fff;
+  border-left: 0.06rem solid #fff;
+  cursor: pointer;
   flex-flow: row wrap;
   font-size: 1rem;
   justify-content: space-around;
