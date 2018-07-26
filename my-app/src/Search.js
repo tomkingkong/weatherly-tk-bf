@@ -20,9 +20,7 @@ export default class Search extends Component {
   returnError = () => {
     const { ifError, loc } = this.props;
 
-    if (ifError) return <h3>{loc} could not be found :( Please enter a different location</h3>
-
-    return;
+    if (ifError && loc !== undefined) return <h3>{loc} could not be found :( </h3>
   }
 
   updateSuggestions = (input) => {
