@@ -4,7 +4,7 @@ import './Header.css';
 export default function Header(props) {
   return (
     <div className="Header">
-      <h1>Welcome to Weather</h1>
+      <h1>Welcome to Weathrly</h1>
     </div>
   )
 }

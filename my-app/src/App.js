@@ -33,6 +33,7 @@ class App extends Component {
   }
 
   updateCurrentData = (loc) => {
+   
     fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly10day/forecast10day/q/${loc}/.json`)
     .then(response => response.json())
     .then(data => {
@@ -47,6 +48,9 @@ class App extends Component {
     })
     .catch(error => { throw new Error(error) })
     .catch(err => {
+      setTimeout(() => {
+        this.updateCurrentData(this.getLocationFromStore('savedLoc'));
+      }, 3000);
       this.setState({
         searchError: true,
       })
@@ -73,11 +77,10 @@ class App extends Component {
       currWeatherObj, 
       hourlyArray, 
       tenDayArray, 
-      searchError, 
       selectedLocation 
     } = this.state;
     
-    if (selectedLocation && !searchError) {
+    if (hourlyArray.length) {
       return (
         <React.Fragment>
           <CurrentWeather currWeatherObj={ currWeatherObj } />
@@ -93,7 +96,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        {searchError && <Header />}
+        {!this.state.hourlyArray.length && <Header />}
         <Search 
           updateLocation={ this.updateLocation } 
           ifError={ searchError } 
