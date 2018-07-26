@@ -41,19 +41,23 @@ describe('Card', () => {
                       condition={hourObject.condition} 
                       />)
     expect(wrapper.find('p').first().text()).toEqual('12PM');
+    expect(wrapper.find('img').length).toEqual(1);
+    expect(wrapper.find('p').length).toEqual(2);
   })
 
   // it('should call toggleHours when card is clicked', () => {
-  //   wrapper = shallow(<Card />);
+  //   let mockFn = jest.fn();
 
-  //   wrapper.instance().toggleHours = jest.fn();
+  //   wrapper = shallow(<Card toggleHours={mockFn}/>);
+
+  //   // wrapper.instance().toggleHours = jest.fn();
     
   //   let card = wrapper.find('article');
 
   //   card.simulate('click');
 
-  //   expect(wrapper.instance().toggleHours).toHaveBeenCalled();
-  //   expect(wrapper.instance().toggleHours).toHaveBeenCalledTimes(1);
+  //   expect(wrapper.props().toggleHours).toHaveBeenCalled();
+  //   expect(wrapper.props().toggleHours).toHaveBeenCalledTimes(1);
   // })
 
 })
