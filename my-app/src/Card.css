@@ -1,9 +1,10 @@
 .Card {
+  color: #fff;
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: center;
-  border-bottom: 0.06rem solid cadetblue;
+  border-top: 0.06rem solid #fff;
   margin: 0 auto;
   height: 5rem;
   width: 5rem;
@@ -20,10 +21,11 @@
 }
 
 .DayHours {
+  color: #fff;
   display: flex;
   align-items: center;
-  border-left: 0.06rem solid cadetblue;
-  border-right: 0.06rem solid cadetblue;
+  border-left: 0.06rem solid #fff;
+  border-right: 0.06rem solid #fff;
   font-size: 0.7rem;
   list-style-type: none;
   padding: 0;
@@ -34,7 +36,7 @@
 }
 
 .Hour {
-  border-right: 0.06rem solid cadetblue;
+  border-right: 0.06rem solid #fff;
   text-align: center;
   min-width: 4rem;
   max-width: 6rem;
