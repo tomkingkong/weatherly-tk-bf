@@ -1,7 +1,9 @@
 .TenDay {
   border-bottom: 0.06rem solid #fff;
-  margin: 0 auto;
-  height: 12rem;
+  border-top: 0.06rem solid #fff;
+  margin: 0rem auto;
+  flex: 1;
+  position: relative;
   overflow: scroll;
   min-width: 20rem;
   max-width: 35rem;
