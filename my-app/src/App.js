@@ -33,6 +33,7 @@ class App extends Component {
   }
 
   updateCurrentData = (loc) => {
+   
     fetch(`http://api.wunderground.com/api/${Key}/conditions/hourly10day/forecast10day/q/${loc}/.json`)
     .then(response => response.json())
     .then(data => {
