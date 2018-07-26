@@ -21,7 +21,7 @@ export const returnWeatherData = (data) => {
       'yday': parseInt(hour.FCTTIME.yday, 0)
     }
   });
-  
+
   let tenDayArray = data.forecast.simpleforecast.forecastday.map(day => {
     return day = {
       'day': day.date.weekday,
@@ -32,6 +32,7 @@ export const returnWeatherData = (data) => {
       'yday': day.date.yday
     }
   });
+
 
   return { currWeatherObj, hourlyArray, tenDayArray };
 }

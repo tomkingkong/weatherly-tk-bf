@@ -37,5 +37,6 @@ describe( 'Search', () => {
     expect(wrapper.state().userLocInput).toEqual('FOO');
   })
 
+  it('should run displaySuggestions when text is entered in the input field')
 
 });
