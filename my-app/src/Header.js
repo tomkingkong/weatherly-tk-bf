@@ -1,12 +1,14 @@
 import React from 'react';
+
 import './Header.css';
 
-export default function Header(props) {
+const Header = () => {
   return (
-    <div className="Header">
+    <header className="Header">
       <h1>Welcome to Weathrly</h1>
-    </div>
+    </header>
   )
 }
 
+export default Header;
 

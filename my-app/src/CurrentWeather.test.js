@@ -20,11 +20,12 @@ describe( 'CurrentWeather', () => {
 
   beforeEach(() => {
     wrapper = shallow(<CurrentWeather currWeatherObj={ currWeatherObj } />);
-  })
+  });
 
   it('should exist', () => {
     expect(wrapper).toBeDefined();
   });
-})
+  
+});
 
 
