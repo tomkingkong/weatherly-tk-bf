@@ -5,25 +5,19 @@ A responsive weather forecasting application in React pulling from the Weather U
 ## Synopsis
 Weathrly is a basic ReactJS app that will tell you the current weather and forecast of the user-submitted location.
 
-(https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/my-app/public/images/weatherly-screenshot-main-mobile.png)
-
-https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/my-app/public/images/weathrly-screenshot-greeting.png
-
-https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/my-app/public/images/weathrly-screenshot-main-large.png
-https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/my-app/public/images/weathrly-screenshot-mobile-dropdown.png
-
 ### Wireframes: 
 
 
 ### Welcome Screen
-
-
+![alt text](https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/images/weathrly-screenshot-greeting.png)
 
 ### Main Screen
+![alt text](https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/images/weathrly-screenshot-main-large.png)
 
+![alt text](https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/images/weatherly-screenshot-main-mobile.png)
 
 ### 24Hour break down
-
+![alt text](https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/images/weathrly-screenshot-mobile-dropdown.png)
 
 
 # Required Technology
