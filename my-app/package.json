@@ -1,4 +1,5 @@
 {
+  "homepage": "http://tomkingkong.github.io/weatherly-tk-bf",
   "name": "weathrly",
   "version": "0.1.0",
   "private": true,
@@ -15,7 +16,9 @@
     "eject": "react-scripts eject",
     "eslint": "react-scripts eslint",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "enzyme": "^3.3.0",
