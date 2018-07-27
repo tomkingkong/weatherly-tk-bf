@@ -56,7 +56,6 @@ describe( 'Search', () => {
     expect(wrapper.state().userLocInput).toEqual('FOO');
   });
 
-
   it('should update suggestion array with valid input on change', () => {
     let userInput = wrapper.find('input').first();
     let event = {
