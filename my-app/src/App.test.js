@@ -7,6 +7,7 @@ import { returnWeatherData } from './Helper.js'
 
 describe( 'App', () => {
   let wrapper;
+  
   beforeEach(() => {
   localStorage.clear();
   wrapper = shallow(<App />);
