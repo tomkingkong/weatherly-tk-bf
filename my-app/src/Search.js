@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import './Search.css'
 
+import Trie from './Trie.js';
 const { capData } = require('./cities.js')
-const { Trie } = require('@tomkingkong/location-search');
 
 export default class Search extends Component {
   constructor(props) {
