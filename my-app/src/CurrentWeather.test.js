@@ -45,6 +45,7 @@ describe( 'CurrentWeather', () => {
 
     expect(wrapper.find('section').length).toEqual(0);
   });
+
 });
 
 
