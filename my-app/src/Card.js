@@ -46,7 +46,11 @@ export default class Card extends Component {
     return (
       <React.Fragment>
         <article className="Card" onClick={ day && this.toggleHours } >
+<<<<<<< HEAD
           { day && <h4>{ day } { this.state.hours ? ' - ' : ' + ' }</h4> }
+=======
+          { day && <h4>{ this.state.hours ? ' - ' : ' + ' } { day }</h4> }
+>>>>>>> 8f3df4a55965713bc1192ed4cb6de17221f72305
           { hour && <p>{ hour }</p> }
           <img alt={ condition } src={ icon } />
           { temp && <p>{ temp }</p>}
