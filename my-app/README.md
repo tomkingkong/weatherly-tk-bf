@@ -9,15 +9,15 @@ Weathrly is a basic ReactJS app that will tell you the current weather and forec
 
 
 ### Welcome Screen
-![alt text](https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/images/weathrly-screenshot-greeting.png)
+![alt text](https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/master/my-app/public/images/weathrly-screenshot-greeting.png)
 
 ### Main Screen
-![alt text](https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/images/weathrly-screenshot-main-large.png)
+![alt text](https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/master/my-app/public/images/weathrly-screenshot-main-large.png)
 
-![alt text](https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/images/weatherly-screenshot-main-mobile.png)
+![alt text](https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/master/my-app/public/images/weatherly-screenshot-main-mobile.png)
 
 ### 24Hour break down
-![alt text](https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/images/weathrly-screenshot-mobile-dropdown.png)
+![alt text](https://raw.githubusercontent.com/tomkingkong/weatherly-tk-bf/master/my-app/public/images/weathrly-screenshot-mobile-dropdown.png)
 
 
 # Required Technology
